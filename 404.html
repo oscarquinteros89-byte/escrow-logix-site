@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Open Escrow | Escrow Logix</title>
+<script>
+// GitHub Pages can't rewrite URLs, so rep links like /escrow-logix-site/AndreaKawawaki land here.
+// Send them to the main page as ?rep=AndreaKawawaki (keeping any UTM tags) so attribution still works.
+(function(){
+  var parts = location.pathname.split("/").filter(Boolean);
+  var base = /\.github\.io$/.test(location.hostname) && parts.length ? "/" + parts.shift() : "";
+  var rep = "";
+  if (parts.length === 1 && !/\.\w+$/.test(parts[0])) rep = parts[0];
+  else if (parts.length === 2 && /^(open|rep)$/i.test(parts[0])) rep = parts[1];
+  var qs = new URLSearchParams(location.search);
+  if (rep) { try { rep = decodeURIComponent(rep); } catch (e) {} qs.set("rep", rep); }
+  var q = qs.toString();
+  location.replace(base + "/" + (q ? "?" + q : "") + location.hash);
+})();
+</script>
+</head>
+<body style="margin:0;font-family:system-ui,sans-serif;background:#111315;color:#f6f1e8;display:grid;place-items:center;min-height:100vh">
+<p>Opening the Escrow Logix intake page… <a href="/escrow-logix-site/" style="color:#e1c285">Continue</a></p>
+</body>
+</html>

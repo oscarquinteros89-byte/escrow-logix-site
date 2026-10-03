@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow"><!-- keeps test copies out of search results; remove at launch -->
+<meta name="description" content="Open a purchase or refinance escrow with Escrow Logix, a licensed and bonded California independent escrow company. Simple intake, secure document upload, same-day order opening.">
+<meta name="theme-color" content="#111315">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Escrow Logix">
+<meta property="og:title" content="Open Escrow | Escrow Logix">
+<meta property="og:description" content="Open a purchase or refinance escrow in minutes. Secure document upload and same-day order opening.">
+<meta property="og:image" content="https://escrowlogix.com/airo-assets/images/pages/home/hero">
+<meta property="og:image:alt" content="Modern luxury hillside residence at golden hour">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://escrowlogix.com">
+<link rel="preload" as="image" href="https://escrowlogix.com/airo-assets/images/pages/home/hero">
+<title>Open Escrow | Escrow Logix</title>
+<style>
+:root{
+  --black:#111315;
+  --charcoal:#191c1f;
+  --charcoal-2:#23272b;
+  --gold:#caa45d;
+  --gold-2:#e1c285;
+  --gold-dark:#8a6631;
+  --cream:#f6f1e8;
+  --cream-2:#fbf8f3;
+  --white:#ffffff;
+  --ink:#20242a;
+  --muted:#62676e;
+  --line:#e6e1d8;
+  --green:#2a7459;
+  --red:#a33a2c;
+  --shadow:0 24px 70px rgba(17,19,21,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--ink);
+  background:var(--cream-2);
+  -webkit-font-smoothing:antialiased;
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{color:inherit}
+[hidden]{display:none!important}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+/* ---------- Top bar ---------- */
+.topbar{
+  position:sticky;top:0;z-index:20;
+  display:flex;align-items:center;justify-content:space-between;
+  min-height:76px;padding:0 max(4vw,calc((100vw - 1180px) / 2));
+  background:rgba(17,19,21,.96);
+  border-bottom:1px solid rgba(255,255,255,.09);
+  backdrop-filter:blur(16px);
+  color:white;
+}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:white}
+/* Real Escrow Logix logo; the CSS mark + wordmark below is only the fallback if it can't load */
+.brand .logo{display:none;height:40px;width:auto;max-width:230px;object-fit:contain}
+.brand.logo-ok .logo{display:block}
+.brand.logo-ok .brand-fallback{display:none}
+.brand.logo-plate .logo{box-sizing:content-box;padding:6px 12px;border-radius:10px;background:var(--cream)}
+.brand.logo-boxed .logo{border-radius:8px}
+.brand-fallback{display:flex;align-items:center;gap:14px}
+.brandmark{
+  width:42px;height:42px;border-radius:50%;flex:none;
+  position:relative;
+  border:5px solid var(--gold);
+  border-right-color:transparent;
+  transform:rotate(-16deg);
+}
+.brandmark:after{
+  content:"";position:absolute;width:20px;height:6px;
+  background:var(--gold);border-radius:6px;right:-4px;top:15px;transform:rotate(16deg);
+}
+.brandcopy strong{display:block;font-size:17px;letter-spacing:.13em}
+.brandcopy span{display:block;margin-top:3px;color:#c6c1b7;font-size:9px;letter-spacing:.2em;text-transform:uppercase}
+.top-actions{display:flex;align-items:center;gap:20px}
+.navlinks{display:flex;gap:22px;font-size:12px;font-weight:700;letter-spacing:.04em}
+.navlinks a{color:#d7d0c4;text-decoration:none}
+.navlinks a:hover{color:var(--gold-2)}
+.phone{color:#d7d0c4;font-size:12px;text-decoration:none}
+.phone b{color:white;font-size:13px}
+.cta-top{
+  padding:10px 16px;border-radius:999px;text-decoration:none;
+  background:var(--gold);color:var(--black);font-size:12px;font-weight:850;letter-spacing:.03em;
+}
+.cta-top:hover{background:var(--gold-2)}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;min-height:540px;color:white;overflow:hidden;
+  background:
+    linear-gradient(90deg,rgba(11,12,13,.94) 0%,rgba(11,12,13,.80) 43%,rgba(11,12,13,.25) 75%,rgba(11,12,13,.08) 100%),
+    url("https://escrowlogix.com/airo-assets/images/pages/home/hero") center/cover no-repeat,
+    radial-gradient(1200px 600px at 85% 30%,#4a3f2c 0%,#23272b 45%,#111315 100%);
+}
+.hero-inner{width:min(1180px,92vw);margin:auto;min-height:540px;display:flex;align-items:center}
+.hero-copy{max-width:690px;padding:68px 0 92px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:11px;font-weight:850;letter-spacing:.16em;text-transform:uppercase;color:#f0d9ae;
+}
+.eyebrow:before{content:"";width:34px;height:1px;background:var(--gold)}
+.hero h1{margin:17px 0 18px;font-size:clamp(42px,6vw,76px);line-height:.98;letter-spacing:-.045em}
+.hero p{margin:0;max-width:640px;color:#e2dfd9;font-size:18px;line-height:1.65}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero-ctas a{
+  display:inline-flex;align-items:center;gap:10px;padding:15px 20px;border-radius:12px;
+  text-decoration:none;font-weight:850;font-size:14px;transition:.18s ease;
+}
+.hero-ctas .gold{background:var(--gold);color:var(--black)}
+.hero-ctas .gold:hover{background:var(--gold-2);transform:translateY(-1px)}
+.hero-ctas .ghost{border:1px solid rgba(255,255,255,.28);color:white;background:rgba(255,255,255,.04)}
+.hero-ctas .ghost:hover{border-color:var(--gold)}
+.hero-trust{display:flex;flex-wrap:wrap;gap:14px 22px;margin-top:28px;color:#f2eee6;font-size:12px;font-weight:750}
+.hero-trust span{display:flex;align-items:center;gap:8px}
+.hero-trust i{
+  width:20px;height:20px;border-radius:50%;background:rgba(202,164,93,.14);color:#f0d4a0;
+  display:grid;place-items:center;font-style:normal;border:1px solid rgba(202,164,93,.25);font-size:11px;
+}
+
+/* ---------- Stats ---------- */
+.stats{
+  width:min(1080px,90vw);margin:-46px auto 54px;position:relative;z-index:4;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  background:white;border-radius:20px;box-shadow:var(--shadow);overflow:hidden;
+}
+.stat{padding:22px 26px;text-align:center;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat strong{display:block;color:var(--charcoal);font-size:22px;letter-spacing:-.02em}
+.stat span{display:block;margin-top:5px;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:800}
+
+/* ---------- Section heads ---------- */
+.section{width:min(1080px,90vw);margin:0 auto}
+.kicker{color:var(--gold-dark);font-size:11px;font-weight:850;letter-spacing:.14em;text-transform:uppercase}
+.section h2{margin:7px 0 8px;color:var(--charcoal);font-size:clamp(28px,4vw,42px);letter-spacing:-.035em;line-height:1.08}
+.section .lede{margin:0;color:var(--muted);line-height:1.65;max-width:660px}
+
+/* ---------- How it works ---------- */
+.how{margin-bottom:58px}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:26px}
+.how-card{background:white;border:1px solid var(--line);border-radius:18px;padding:22px}
+.how-num{
+  width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+  background:var(--charcoal);color:var(--gold-2);font-weight:850;font-size:13px;margin-bottom:16px;
+}
+.how-card strong{display:block;color:var(--charcoal);font-size:16px;margin-bottom:6px}
+.how-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.55}
+
+/* ---------- Intake app ---------- */
+.intro{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:6px}
+.process-note{max-width:320px;padding:15px 18px;border-left:2px solid var(--gold);color:#5d5d5d;font-size:12px;line-height:1.55}
+.app{
+  width:min(1080px,90vw);margin:18px auto 34px;scroll-margin-top:96px;
+  background:white;border-radius:28px;overflow:hidden;
+  box-shadow:0 16px 46px rgba(17,19,21,.09);border:1px solid #ede8df;
+}
+.app-head{
+  padding:20px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  border-bottom:1px solid var(--line);
+}
+.steps{display:flex;gap:6px;list-style:none;margin:0;padding:0;flex:1;min-width:260px;max-width:620px}
+.steps li{flex:1;display:grid;gap:7px}
+.steps li .seg{height:6px;border-radius:99px;background:#eeeae3;transition:.25s}
+.steps li.done .seg,.steps li.current .seg{background:linear-gradient(90deg,var(--gold-dark),var(--gold-2))}
+.steps li span{font-size:10px;font-weight:850;letter-spacing:.06em;text-transform:uppercase;color:#a29b90}
+.steps li.current span,.steps li.done span{color:var(--charcoal)}
+.rep{
+  display:none;align-items:center;gap:10px;padding:7px 16px 7px 12px;border-radius:999px;
+  background:var(--cream);color:var(--charcoal);border:1px solid #eadbc0;font-size:13px;font-weight:850;line-height:1.25;
+}
+.rep:has(img){padding-left:6px}
+.rep img{width:34px;height:34px;border-radius:50%;object-fit:cover;flex:none;border:1.5px solid var(--gold)}
+.rep small{display:block;color:#8a6631;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.panel{display:none;padding:36px}
+.panel.active{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.panel h3{margin:0;color:var(--charcoal);font-size:30px;letter-spacing:-.03em}
+.panel .sub{margin:8px 0 26px;color:var(--muted);line-height:1.6}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.choice{
+  position:relative;text-align:left;min-height:210px;padding:25px;
+  background:#fff;border:1.5px solid var(--line);border-radius:20px;transition:.2s ease;color:inherit;
+}
+.choice:hover{transform:translateY(-2px);border-color:#d4b77e;box-shadow:0 14px 34px rgba(17,19,21,.08)}
+.choice[aria-pressed="true"]{
+  border-color:var(--gold);box-shadow:0 0 0 3px rgba(202,164,93,.15);
+  background:linear-gradient(180deg,#fff 0%,#fffcf7 100%);
+}
+.choice-icon{
+  width:54px;height:54px;border-radius:16px;display:grid;place-items:center;
+  background:var(--cream);color:var(--charcoal);margin-bottom:27px;
+}
+.choice-icon svg{width:26px;height:26px}
+.choice strong{display:block;color:var(--charcoal);font-size:21px}
+.choice p{margin:8px 0 0;color:var(--muted);font-size:13px;line-height:1.55}
+.choice .go{
+  position:absolute;right:22px;top:22px;width:30px;height:30px;border-radius:50%;
+  display:grid;place-items:center;background:#f2eee7;color:var(--gold-dark);font-weight:900;
+}
+.choice[aria-pressed="true"] .go{background:var(--gold);color:var(--black)}
+
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{display:grid;gap:8px;align-content:start}
+.full{grid-column:1/-1}
+label,.label{font-size:12px;font-weight:850;color:#52545a}
+.req{color:var(--gold-dark)}
+input,select,textarea{
+  width:100%;padding:14px 15px;border-radius:12px;
+  border:1.3px solid #ded9d1;background:white;color:var(--ink);outline:none;
+}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(202,164,93,.14)}
+input[aria-invalid="true"],select[aria-invalid="true"]{border-color:var(--red)}
+.err{display:none;color:var(--red);font-size:11px;font-weight:750}
+.field.invalid .err{display:block}
+.hint{color:var(--muted);font-size:11px}
+textarea{min-height:95px;resize:vertical}
+.seg-group{display:flex;flex-wrap:wrap;gap:8px}
+.seg-group label{
+  display:flex;align-items:center;gap:8px;padding:11px 14px;border-radius:11px;
+  border:1.3px solid #ded9d1;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;
+}
+.seg-group input{width:auto;margin:0;accent-color:var(--gold-dark)}
+.seg-group label:has(input:checked){border-color:var(--gold);background:#fffaf0}
+.subhead{grid-column:1/-1;margin:10px 0 -4px;padding-top:16px;border-top:1px solid var(--line);
+  font-size:11px;font-weight:850;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-dark)}
+.hp{position:absolute;left:-9999px}
+
+.uploadgrid{display:grid;grid-template-columns:1.08fr .92fr;gap:20px}
+.upload{
+  min-height:300px;border:1.5px dashed #cfc6b7;border-radius:18px;background:#fcfaf6;
+  padding:28px;display:grid;place-items:center;text-align:center;
+}
+.upload iframe{width:100%;min-height:420px;border:0;border-radius:12px;background:white}
+.upload-icon{
+  width:62px;height:62px;border-radius:18px;background:var(--charcoal);color:var(--gold-2);
+  display:grid;place-items:center;margin:0 auto 15px;
+}
+.upload-icon svg{width:28px;height:28px}
+.upload h4{margin:0;color:var(--charcoal);font-size:20px}
+.upload p{margin:8px auto;color:var(--muted);font-size:13px;line-height:1.55;max-width:380px}
+.placeholder{
+  display:inline-block;margin-top:14px;padding:10px 13px;border-radius:10px;
+  background:#ede8df;color:#665e53;font-size:11px;font-weight:850;letter-spacing:.03em;
+}
+.security{background:var(--charcoal);color:white;border-radius:18px;padding:24px}
+.security h4{margin:0 0 10px;color:#f5e1bb;font-size:19px}
+.security p{margin:0;color:#c8c8c8;font-size:12px;line-height:1.6}
+.security ul{padding-left:18px;margin-bottom:0}
+.security li{margin:9px 0;color:#e2ded6;font-size:12px;line-height:1.5}
+.doc-status{margin-top:20px;display:grid;gap:8px}
+
+.review{border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.review-group{padding:10px 18px;background:var(--cream);font-size:10px;font-weight:850;letter-spacing:.12em;text-transform:uppercase;color:#6d532a;display:flex;justify-content:space-between;align-items:center}
+.review-group button{border:0;background:none;color:var(--gold-dark);font-size:11px;font-weight:850;text-decoration:underline;letter-spacing:0;text-transform:none;padding:0}
+.review-row{display:grid;grid-template-columns:185px 1fr;gap:14px;padding:13px 18px;border-bottom:1px solid var(--line)}
+.review-row:last-child{border-bottom:0}
+.review-key{font-size:12px;color:var(--muted);font-weight:750}
+.review-val{font-size:13px;color:var(--charcoal);font-weight:850;word-break:break-word}
+.consent{display:flex;gap:12px;align-items:flex-start;margin-top:20px;padding:16px 18px;border-radius:14px;background:#fcfaf6;border:1px solid var(--line)}
+.consent input{width:18px;height:18px;margin-top:2px;flex:none;accent-color:var(--gold-dark)}
+.consent label{font-size:12px;font-weight:600;line-height:1.6;color:#4d5056}
+.consent.invalid{border-color:var(--red)}
+.form-error{display:none;margin-top:14px;color:var(--red);font-size:13px;font-weight:750}
+.form-error.show{display:block}
+
+.actions{display:flex;justify-content:space-between;gap:12px;margin-top:28px}
+.btn{border:0;border-radius:11px;padding:13px 20px;font-weight:850;transition:.18s ease}
+.btn.primary{background:var(--charcoal);color:white;box-shadow:0 8px 20px rgba(17,19,21,.16)}
+.btn.primary:hover{background:#2c3238;transform:translateY(-1px)}
+.btn.secondary{background:#f0ede7;color:var(--charcoal)}
+.btn[disabled]{opacity:.4;cursor:not-allowed;transform:none!important}
+
+.success{text-align:center;padding:30px 8px 14px}
+.success-icon{
+  width:76px;height:76px;border-radius:50%;display:grid;place-items:center;margin:0 auto 18px;
+  background:#e8f3ee;color:var(--green);font-size:32px;font-weight:900;
+}
+.success h3{font-size:34px}
+.success p{max-width:630px;margin:10px auto 0;color:var(--muted);line-height:1.65}
+.refbox{display:inline-block;margin-top:22px;padding:12px 17px;border:1px solid var(--line);border-radius:12px;color:var(--muted);font-size:11px}
+.refbox strong{display:block;color:var(--charcoal);font-size:16px;margin-top:4px;letter-spacing:.04em}
+.next-list{max-width:560px;margin:26px auto 0;text-align:left;display:grid;gap:10px}
+.next-list div{display:flex;gap:12px;align-items:flex-start;font-size:13px;color:#4d5056;line-height:1.5}
+.next-list b{flex:none;width:24px;height:24px;border-radius:50%;background:var(--cream);color:var(--gold-dark);display:grid;place-items:center;font-size:11px}
+.dev{margin:26px auto 0;max-width:760px;text-align:left}
+.dev summary{cursor:pointer;font-size:12px;font-weight:850;color:var(--gold-dark)}
+.dev pre{background:var(--black);color:#e9e2d4;padding:16px;border-radius:12px;font-size:11px;overflow:auto;max-height:340px}
+
+/* ---------- Wire fraud ---------- */
+.wire{
+  width:min(1080px,90vw);margin:6px auto 46px;display:flex;gap:18px;align-items:flex-start;
+  padding:22px 26px;border-radius:18px;background:#fff7ea;border:1px solid #efd9b0;
+}
+.wire-icon{flex:none;width:44px;height:44px;border-radius:12px;background:var(--charcoal);color:var(--gold-2);display:grid;place-items:center}
+.wire-icon svg{width:22px;height:22px}
+.wire strong{display:block;color:var(--charcoal);font-size:15px;margin-bottom:4px}
+.wire p{margin:0;color:#5b5a57;font-size:13px;line-height:1.6}
+
+/* ---------- Trust band ---------- */
+.trust-band{
+  width:min(1080px,90vw);margin:0 auto 58px;border-radius:24px;overflow:hidden;
+  display:grid;grid-template-columns:.9fr 1.1fr;min-height:290px;background:var(--charcoal);color:white;
+}
+.team-photo{
+  min-height:290px;
+  background:
+    linear-gradient(90deg,rgba(17,19,21,.05),rgba(17,19,21,.33)),
+    url("https://escrowlogix.com/airo-assets/images/pages/home/team-group") center/cover no-repeat,
+    linear-gradient(135deg,#3a3326,#191c1f);
+}
+.trust-copy{padding:34px 38px;display:flex;flex-direction:column;justify-content:center}
+.trust-copy .kicker{color:#dec38e}
+.trust-copy h3{margin:8px 0 12px;font-size:28px;letter-spacing:-.03em}
+.trust-copy p{margin:0;color:#c7c5c0;line-height:1.65;font-size:14px}
+.team{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px;margin:24px 0 0;padding:22px 0 0;border-top:1px solid rgba(255,255,255,.1);list-style:none}
+.member{display:flex;align-items:center;gap:12px}
+.member img,.member .initials{width:48px;height:48px;border-radius:50%;object-fit:cover;flex:none;border:1.5px solid rgba(202,164,93,.5);background:#2c3136}
+.member .initials{display:grid;place-items:center;color:var(--gold-2);font-weight:850;font-size:14px;letter-spacing:.04em}
+.member strong{display:block;font-size:13px;color:white}
+.member span{display:block;margin-top:2px;font-size:11px;color:#b9b6b0;line-height:1.4}
+.reviews{display:inline-flex;align-items:center;gap:10px;margin-top:22px;color:#f0d9ae;font-size:12px;font-weight:800;text-decoration:none;align-self:flex-start}
+.reviews .stars{color:var(--gold);letter-spacing:2px;font-size:14px}
+.reviews:hover{color:white}
+
+/* ---------- FAQ ---------- */
+.faq{margin-bottom:64px}
+.faq-wrap{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:44px;align-items:start;margin-top:22px}
+.faq-list{border-top:1px solid var(--line)}
+.contact-card{position:sticky;top:96px;background:white;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 16px 40px rgba(17,19,21,.06)}
+.contact-card img{display:block;width:100%;height:210px;object-fit:cover;object-position:center 22%}
+.contact-body{padding:22px}
+.contact-body h3{margin:0 0 6px;color:var(--charcoal);font-size:19px;letter-spacing:-.02em}
+.contact-body p{margin:0 0 16px;color:var(--muted);font-size:13px;line-height:1.55}
+.call-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;border-radius:11px;background:var(--charcoal);color:white;text-decoration:none;font-weight:850;font-size:14px}
+.call-btn:hover{background:#2c3238}
+.contact-meta{margin-top:16px;display:grid;gap:9px;font-size:12px;color:#55595f;line-height:1.5}
+.contact-meta a{color:var(--gold-dark);font-weight:800;text-decoration:none}
+.contact-meta a:hover{text-decoration:underline}
+.faq details{border-bottom:1px solid var(--line);padding:4px 0}
+.faq summary{
+  list-style:none;cursor:pointer;padding:16px 36px 16px 0;position:relative;
+  font-weight:800;color:var(--charcoal);font-size:15px;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";position:absolute;right:6px;top:12px;font-size:22px;color:var(--gold-dark);font-weight:500}
+.faq details[open] summary:after{content:"–"}
+.faq details p{margin:0 0 18px;color:var(--muted);line-height:1.65;font-size:14px;max-width:820px}
+
+/* ---------- Footer ---------- */
+.footer{background:var(--black);color:#aeadab;padding:40px 5vw 28px}
+.footer-inner{width:min(1080px,90vw);margin:0 auto;display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.footer .brand{margin-bottom:12px}
+.footer-inner p{margin:0;font-size:12px;line-height:1.6;max-width:340px}
+.footer .brand .logo{height:44px}
+.footer address{margin-top:12px;font-style:normal;font-size:12px;line-height:1.6;color:#cfc8bb}
+.footer-col strong{display:block;color:white;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.footer-col a,.footer-col span{display:block;color:#cfc8bb;text-decoration:none;font-size:13px;margin:6px 0}
+.footer-col a:hover{color:var(--gold-2)}
+.footnote{width:min(1080px,90vw);margin:28px auto 0;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);font-size:11px;line-height:1.55;color:#8c8a86}
+
+@media(max-width:960px){
+  .navlinks{display:none}
+  .how-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:900px){
+  .hero{background-position:65% center}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat:nth-child(2){border-right:0}
+  .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .intro{align-items:start;flex-direction:column}
+  .process-note{max-width:none}
+  .choices,.uploadgrid,.trust-band,.faq-wrap{grid-template-columns:1fr}
+  .team-photo{min-height:320px}
+  .contact-card{position:static;max-width:520px}
+}
+@media(max-width:640px){
+  .topbar{padding:0 16px}
+  .phone{display:none}
+  .cta-top{padding:9px 13px;font-size:11px}
+  .brandcopy span{display:none}
+  .topbar .brand .logo{height:32px;max-width:150px}
+  .team{grid-template-columns:1fr}
+  .hero{min-height:560px;background-position:68% center}
+  .hero-inner{min-height:560px}
+  .hero-copy{padding:56px 0 80px}
+  .hero h1{font-size:44px}
+  .hero p{font-size:16px}
+  .stats,.section,.app,.trust-band,.wire{width:calc(100vw - 32px)}
+  .stats{margin-top:-36px}
+  .how-grid{grid-template-columns:1fr}
+  .app-head{padding:18px 20px}
+  .steps li span{display:none}
+  .panel{padding:27px 20px}
+  .panel h3{font-size:25px}
+  .formgrid{grid-template-columns:1fr}
+  .full{grid-column:auto}
+  .review-row{grid-template-columns:1fr;gap:4px}
+  .actions{flex-direction:column-reverse}
+  .btn{width:100%}
+  .wire{flex-direction:column}
+  .trust-copy{padding:28px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<!--
+  ESCROW LOGIX — OPEN ESCROW INTAKE · V0.3
+  ----------------------------------------
+  Single-file page for GoDaddy Airo (or any static host). All integration
+  points live in the CONFIG object at the top of the <script> block:
+    • crmEndpoint        – webhook URL that receives the JSON payload (Pipedrive / Zapier / Make / custom adapter)
+    • sharefile.purchase – ShareFile Remote Upload Form URL for Purchase Contracts
+    • sharefile.refinance– ShareFile Remote Upload Form URL for 1003s
+    • reps               – optional directory of reps (name, title, photo); unknown rep links still pass through
+    • basePath           – the path this page lives at, if not the site root (so it isn't mistaken for a rep link)
+  With crmEndpoint empty the page runs in prototype mode: nothing is transmitted or stored.
+  Sensitive documents never touch this page or the CRM; they go straight to ShareFile.
+
+  BRAND ASSETS load from Escrow Logix's live site (search this file for "airo-assets"):
+    logo/horizontal · pages/home/hero · pages/home/team-group · pages/home/why-us-portrait · team/member-1…4
+  Every image has a fallback (CSS logo mark, gradients, initials), so the page still looks
+  finished if one fails to load. To self-host, download those files and swap the URLs.
+-->
+
+<header class="topbar">
+  <a class="brand" href="https://escrowlogix.com" target="_blank" rel="noopener" aria-label="Escrow Logix home">
+    <img class="logo" src="https://escrowlogix.com/airo-assets/images/logo/horizontal" alt="Escrow Logix" decoding="async">
+    <span class="brand-fallback" aria-hidden="true">
+      <span class="brandmark"></span>
+      <span class="brandcopy"><strong>ESCROW LOGIX</strong><span>California Independent Escrow</span></span>
+    </span>
+  </a>
+  <div class="top-actions">
+    <nav class="navlinks" aria-label="Page sections">
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="phone" id="phoneTop" href="tel:+18182351225">Questions? <b>818.235.1225</b></a>
+    <a class="cta-top" href="#app">Open Escrow</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="eyebrow">Open Escrow</div>
+      <h1>A simpler start to a confident closing.</h1>
+      <p>Open a purchase or refinance escrow with Escrow Logix in a few minutes. Tell us about the transaction, send your documents securely, and our team takes it from there.</p>
+      <div class="hero-ctas">
+        <a class="gold" href="#app" data-preset="purchase">Open a Purchase Escrow <span aria-hidden="true">→</span></a>
+        <a class="ghost" href="#app" data-preset="refinance">Open a Refinance Escrow</a>
+      </div>
+      <div class="hero-trust">
+        <span><i aria-hidden="true">✓</i> Licensed &amp; bonded in California</span>
+        <span><i aria-hidden="true">✓</i> Bank-grade document security</span>
+        <span><i aria-hidden="true">✓</i> Same-day order opening</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats" aria-label="Escrow Logix at a glance">
+  <div class="stat"><strong>30+</strong><span>Years of expertise</span></div>
+  <div class="stat"><strong>$2.4B+</strong><span>Transactions closed</span></div>
+  <div class="stat"><strong>1,000's</strong><span>Closings completed</span></div>
+  <div class="stat"><strong>100%</strong><span>Client satisfaction</span></div>
+</section>
+
+<section class="section how" id="how">
+  <div class="kicker">How it works</div>
+  <h2>From request to open escrow, in four steps.</h2>
+  <p class="lede">No phone tag and no emailed attachments. Here is what happens after you click submit.</p>
+  <div class="how-grid">
+    <div class="how-card"><div class="how-num">1</div><strong>Tell us the basics</strong><p>Purchase or refinance, who you are, and the property. About three minutes.</p></div>
+    <div class="how-card"><div class="how-num">2</div><strong>Send documents securely</strong><p>Your Purchase Contract or 1003 goes straight to our encrypted document portal.</p></div>
+    <div class="how-card"><div class="how-num">3</div><strong>We assign your officer</strong><p>Our team reviews the request and matches it with the right escrow officer.</p></div>
+    <div class="how-card"><div class="how-num">4</div><strong>Escrow is opened</strong><p>You receive your escrow number and your officer's direct contact information.</p></div>
+  </div>
+</section>
+
+<section class="section intro">
+  <div>
+    <div class="kicker">Digital escrow intake</div>
+    <h2>Open escrow without the back-and-forth.</h2>
+    <p class="lede">Built for agents, lenders, buyers, and sellers. Transaction details go to our team; sensitive documents stay in Escrow Logix's secure systems.</p>
+  </div>
+  <div class="process-note">Have your Purchase Contract (purchase) or 1003 loan application (refinance) handy. If it isn't ready, you can still submit and send it later.</div>
+</section>
+
+<main class="app" id="app" aria-labelledby="appTitle">
+  <h2 id="appTitle" class="sr-only">Open escrow request form</h2>
+  <div class="app-head">
+    <ol class="steps" id="steps" aria-label="Progress">
+      <li class="current"><div class="seg"></div><span>Type</span></li>
+      <li><div class="seg"></div><span>Contact</span></li>
+      <li><div class="seg"></div><span>Transaction</span></li>
+      <li><div class="seg"></div><span>Documents</span></li>
+      <li><div class="seg"></div><span>Review</span></li>
+    </ol>
+    <div class="rep" id="repBadge"></div>
+  </div>
+  <p class="sr-only" id="liveStep" aria-live="polite"></p>
+
+  <form id="form" novalidate>
+    <!-- honeypot: real people never fill this -->
+    <div class="hp" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+
+    <!-- STEP 1 -->
+    <section class="panel active" data-step="1" aria-labelledby="h1s">
+      <h3 id="h1s" tabindex="-1">What are you opening?</h3>
+      <p class="sub">Choose the transaction type and we'll tailor the next steps.</p>
+      <div class="choices">
+        <button class="choice" data-type="purchase" type="button" aria-pressed="false">
+          <span class="go" aria-hidden="true">→</span>
+          <div class="choice-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg></div>
+          <strong>Purchase Escrow</strong>
+          <p>Buying or selling a home or investment property. You'll send the Purchase Contract.</p>
+        </button>
+        <button class="choice" data-type="refinance" type="button" aria-pressed="false">
+          <span class="go" aria-hidden="true">→</span>
+          <div class="choice-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 0 0-14.3-4.9L4 8"/><path d="M4 3v5h5"/><path d="M4 13a8 8 0 0 0 14.3 4.9L20 16"/><path d="M20 21v-5h-5"/></svg></div>
+          <strong>Refinance Escrow</strong>
+          <p>Refinancing an existing loan. You'll send the 1003 loan application.</p>
+        </button>
+      </div>
+      <div class="actions"><span></span><button class="btn primary next" type="button" id="next1" disabled>Continue</button></div>
+    </section>
+
+    <!-- STEP 2 -->
+    <section class="panel" data-step="2" aria-labelledby="h2s">
+      <h3 id="h2s" tabindex="-1">Who's opening this escrow?</h3>
+      <p class="sub">We'll use this to confirm the order and send your escrow number.</p>
+      <div class="formgrid">
+        <div class="field"><label for="firstName">First name <span class="req">*</span></label><input id="firstName" name="firstName" autocomplete="given-name" required><span class="err">Please enter a first name.</span></div>
+        <div class="field"><label for="lastName">Last name <span class="req">*</span></label><input id="lastName" name="lastName" autocomplete="family-name" required><span class="err">Please enter a last name.</span></div>
+        <div class="field"><label for="email">Email <span class="req">*</span></label><input id="email" name="email" type="email" autocomplete="email" required><span class="err">Please enter a valid email.</span></div>
+        <div class="field"><label for="phone">Phone <span class="req">*</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(818) 555-0123" required pattern="[0-9 \(\)+.\-]{10,}"><span class="err">Please enter a 10-digit phone number.</span></div>
+        <div class="field">
+          <label for="role">Your role <span class="req">*</span></label>
+          <select id="role" name="role" required>
+            <option value="">Select one</option>
+            <option>Listing Agent</option>
+            <option>Buyer's Agent</option>
+            <option>Loan Officer / Mortgage Professional</option>
+            <option>Buyer</option>
+            <option>Seller</option>
+            <option>Borrower / Homeowner</option>
+            <option>Attorney</option>
+            <option>Investor</option>
+            <option>Transaction Coordinator</option>
+            <option>Other</option>
+          </select>
+          <span class="err">Please choose your role.</span>
+        </div>
+        <div class="field"><label for="company">Company / brokerage</label><input id="company" name="company" autocomplete="organization"></div>
+        <div class="field full">
+          <span class="label">Preferred contact method</span>
+          <div class="seg-group" role="radiogroup" aria-label="Preferred contact method">
+            <label><input type="radio" name="contactPref" value="Email" checked> Email</label>
+            <label><input type="radio" name="contactPref" value="Phone"> Phone</label>
+            <label><input type="radio" name="contactPref" value="Text"> Text</label>
+          </div>
+        </div>
+      </div>
+      <div class="actions"><button class="btn secondary back" type="button">Back</button><button class="btn primary next" type="button">Continue</button></div>
+    </section>
+
+    <!-- STEP 3 -->
+    <section class="panel" data-step="3" aria-labelledby="h3s">
+      <h3 id="h3s" tabindex="-1">Tell us about the transaction.</h3>
+      <p class="sub">Just the basics we need to route your file to the right escrow officer.</p>
+      <div class="formgrid">
+        <div class="field full"><label for="street">Property street address <span class="req">*</span></label><input id="street" name="street" autocomplete="street-address" placeholder="123 Main Street" required><span class="err">Please enter the property address.</span></div>
+        <div class="field"><label for="city">City <span class="req">*</span></label><input id="city" name="city" autocomplete="address-level2" required><span class="err">Please enter the city.</span></div>
+        <div class="formgrid" style="gap:14px">
+          <div class="field"><label for="state">State</label><input id="state" name="state" value="CA" autocomplete="address-level1" maxlength="2"></div>
+          <div class="field"><label for="zip">ZIP <span class="req">*</span></label><input id="zip" name="zip" autocomplete="postal-code" inputmode="numeric" pattern="\d{5}(-\d{4})?" required><span class="err">5-digit ZIP.</span></div>
+        </div>
+        <div class="field">
+          <label for="propertyType">Property type</label>
+          <select id="propertyType" name="propertyType">
+            <option value="">Select one</option>
+            <option>Single-family residence</option>
+            <option>Condo / Townhome</option>
+            <option>2–4 units</option>
+            <option>5+ units / Multifamily</option>
+            <option>Commercial</option>
+            <option>Vacant land</option>
+          </select>
+        </div>
+        <div class="field"><label for="apn">APN <span class="hint">(if known)</span></label><input id="apn" name="apn"></div>
+
+        <!-- Purchase-only -->
+        <div class="subhead" data-for="purchase">Purchase details</div>
+        <div class="field" data-for="purchase"><label for="salePrice">Purchase price <span class="req">*</span></label><input id="salePrice" name="salePrice" inputmode="decimal" placeholder="$" data-money required><span class="err">Please enter the purchase price.</span></div>
+        <div class="field" data-for="purchase"><label for="deposit">Initial deposit (EMD)</label><input id="deposit" name="deposit" inputmode="decimal" placeholder="$" data-money></div>
+        <div class="field" data-for="purchase"><label for="acceptanceDate">Acceptance date</label><input id="acceptanceDate" name="acceptanceDate" type="date"></div>
+        <div class="field" data-for="purchase"><label for="closeDate">Target close of escrow</label><input id="closeDate" name="closeDate" type="date"></div>
+        <div class="field" data-for="purchase"><label for="buyerNames">Buyer name(s)</label><input id="buyerNames" name="buyerNames"></div>
+        <div class="field" data-for="purchase"><label for="sellerNames">Seller name(s)</label><input id="sellerNames" name="sellerNames"></div>
+        <div class="field" data-for="purchase"><label for="financing">Financing</label>
+          <select id="financing" name="financing"><option value="">Select one</option><option>Conventional</option><option>FHA</option><option>VA</option><option>Jumbo</option><option>All cash</option><option>Other</option></select>
+        </div>
+        <div class="field" data-for="purchase"><label for="otherAgent">Other side's agent</label><input id="otherAgent" name="otherAgent" placeholder="Name and brokerage"></div>
+
+        <!-- Refinance-only -->
+        <div class="subhead" data-for="refinance">Refinance details</div>
+        <div class="field" data-for="refinance"><label for="loanAmount">New loan amount <span class="req">*</span></label><input id="loanAmount" name="loanAmount" inputmode="decimal" placeholder="$" data-money required><span class="err">Please enter the loan amount.</span></div>
+        <div class="field" data-for="refinance"><label for="lender">Lender <span class="req">*</span></label><input id="lender" name="lender" required><span class="err">Please enter the lender.</span></div>
+        <div class="field" data-for="refinance"><label for="borrowerNames">Borrower name(s)</label><input id="borrowerNames" name="borrowerNames"></div>
+        <div class="field" data-for="refinance"><label for="loanOfficer">Loan officer</label><input id="loanOfficer" name="loanOfficer" placeholder="Name, phone, or email"></div>
+        <div class="field" data-for="refinance"><label for="refiType">Refinance type</label>
+          <select id="refiType" name="refiType"><option value="">Select one</option><option>Rate / term</option><option>Cash-out</option><option>HELOC / 2nd</option><option>Other</option></select>
+        </div>
+        <div class="field" data-for="refinance"><label for="fundDate">Target funding date</label><input id="fundDate" name="fundDate" type="date"></div>
+
+        <div class="field full"><label for="notes">Anything we should know?</label><textarea id="notes" name="notes" placeholder="Timelines, special circumstances, preferred escrow officer, other parties to loop in…"></textarea></div>
+      </div>
+      <div class="actions"><button class="btn secondary back" type="button">Back</button><button class="btn primary next" type="button">Continue</button></div>
+    </section>
+
+    <!-- STEP 4 -->
+    <section class="panel" data-step="4" aria-labelledby="h4s">
+      <h3 id="h4s" tabindex="-1">Send your document securely.</h3>
+      <p class="sub" id="uploadSub">Upload through our encrypted portal below. Files go directly to Escrow Logix and never pass through this website.</p>
+      <div class="uploadgrid">
+        <div class="upload" id="uploadBox">
+          <div id="uploadPlaceholder">
+            <div class="upload-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+            <h4 id="uploadTitle">Secure document upload</h4>
+            <p id="uploadText">The ShareFile Remote Upload Form appears here once it's connected.</p>
+            <div class="placeholder">SHAREFILE REMOTE UPLOAD FORM</div>
+          </div>
+        </div>
+        <aside class="security">
+          <h4>Protected by design.</h4>
+          <p>Your documents are handled differently from the rest of this form.</p>
+          <ul>
+            <li id="docLine">Purchase Contracts and 1003s upload straight to our encrypted ShareFile portal.</li>
+            <li>This website never stores your documents.</li>
+            <li>Only the Escrow Logix team can access what you upload.</li>
+            <li>Please don't upload bank statements, ID, or wiring details here unless your escrow officer asks.</li>
+          </ul>
+        </aside>
+      </div>
+      <div class="field full doc-status">
+        <span class="label">Document status <span class="req">*</span></span>
+        <div class="seg-group" role="radiogroup" aria-label="Document status">
+          <label><input type="radio" name="docStatus" value="Uploaded" required> <span id="docUploadedLabel">I've uploaded it above</span></label>
+          <label><input type="radio" name="docStatus" value="Sending later"> I'll send it later</label>
+          <label><input type="radio" name="docStatus" value="Agent/lender will send"> My agent or lender will send it</label>
+        </div>
+        <span class="err">Please choose one so we know what to expect.</span>
+      </div>
+      <div class="actions"><button class="btn secondary back" type="button">Back</button><button class="btn primary next" type="button">Continue to review</button></div>
+    </section>
+
+    <!-- STEP 5 -->
+    <section class="panel" data-step="5" aria-labelledby="h5s">
+      <h3 id="h5s" tabindex="-1">Review and submit.</h3>
+      <p class="sub">Check the details below before sending your request to the Escrow Logix team.</p>
+      <div class="review" id="review"></div>
+      <div class="consent" id="consentBox">
+        <input type="checkbox" id="consent" name="consent" required>
+        <label for="consent">I confirm this information is accurate and I'm authorized to open this escrow. I agree that Escrow Logix may contact me about this request. Escrow is not opened until an Escrow Logix officer confirms it and issues an escrow number.</label>
+      </div>
+      <p class="form-error" id="submitError" role="alert"></p>
+      <div class="actions"><button class="btn secondary back" type="button">Back</button><button class="btn primary" id="submitBtn" type="submit">Submit escrow request</button></div>
+    </section>
+  </form>
+
+  <!-- SUCCESS -->
+  <section class="panel" data-step="6" aria-labelledby="h6s">
+    <div class="success">
+      <div class="success-icon" aria-hidden="true">✓</div>
+      <h3 id="h6s" tabindex="-1">Request received.</h3>
+      <p id="successText">Thank you. Our team will review your request and assign an escrow officer. You'll hear from us by your preferred contact method, usually the same business day.</p>
+      <div class="refbox">Your request reference<strong id="submissionRef"></strong></div>
+      <div class="next-list">
+        <div><b>1</b><span>We review your request and match it with an escrow officer.</span></div>
+        <div><b>2</b><span>Your officer confirms the order and sends your escrow number.</span></div>
+        <div><b>3</b><span id="nextDoc">If you haven't sent your document yet, your officer will send a secure upload link.</span></div>
+      </div>
+      <details class="dev" id="devBox" hidden>
+        <summary>Developer preview: CRM payload</summary>
+        <pre id="payloadOut"></pre>
+      </details>
+      <div class="actions" style="justify-content:center"><button class="btn secondary" id="startOver" type="button">Open another escrow</button></div>
+    </div>
+  </section>
+</main>
+
+<section class="wire" aria-label="Wire fraud warning">
+  <div class="wire-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4"/><path d="M12 17h.01"/></svg></div>
+  <div>
+    <strong>Protect yourself from wire fraud.</strong>
+    <p>Escrow Logix will never change wiring instructions by email or text. Before sending any funds, call your escrow officer at a phone number you've verified independently. This form never asks for bank or wiring information.</p>
+  </div>
+</section>
+
+<section class="trust-band">
+  <div class="team-photo" role="img" aria-label="The Escrow Logix team"></div>
+  <div class="trust-copy">
+    <div class="kicker">Real people. Real accountability.</div>
+    <h3>People who treat your transaction like their own.</h3>
+    <p>A dedicated escrow officer on every file, real-time status updates at each milestone, and a real person reviewing every request before your escrow is opened.</p>
+    <ul class="team" aria-label="The Escrow Logix team">
+      <li class="member"><img src="https://escrowlogix.com/airo-assets/images/team/member-1-man" alt="" data-initials="JL" width="48" height="48" loading="lazy" decoding="async"><div><strong>James Lough</strong><span>Escrow Manager / Senior Escrow Officer</span></div></li>
+      <li class="member"><img src="https://escrowlogix.com/airo-assets/images/team/member-2-glasses" alt="" data-initials="AO" width="48" height="48" loading="lazy" decoding="async"><div><strong>Aidan Odel</strong><span>Escrow Officer</span></div></li>
+      <li class="member"><img src="https://escrowlogix.com/airo-assets/images/team/member-3-woman-crossed" alt="" data-initials="YM" width="48" height="48" loading="lazy" decoding="async"><div><strong>Yesenia Meza</strong><span>Escrow Assistant</span></div></li>
+      <li class="member"><img src="https://escrowlogix.com/airo-assets/images/team/member-4-woman-desk" alt="" data-initials="AK" width="48" height="48" loading="lazy" decoding="async"><div><strong>Andrea Kawawaki</strong><span>Senior Sales Representative</span></div></li>
+    </ul>
+    <a class="reviews" href="https://www.google.com/search?q=Escrow+Logix+reviews" target="_blank" rel="noopener"><span class="stars" aria-hidden="true">★★★★★</span> 5.0 on Google Reviews <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<section class="section faq" id="faq">
+  <div class="kicker">Questions</div>
+  <h2>Before you open escrow.</h2>
+  <div class="faq-wrap">
+  <div class="faq-list">
+    <details><summary>Who can open escrow with this form?</summary><p>Agents, loan officers, buyers, sellers, borrowers, attorneys, and transaction coordinators can all start a request. If you're opening on someone's behalf, include their names in the transaction step.</p></details>
+    <details><summary>What documents do I need?</summary><p>For a purchase, the fully executed Purchase Contract. For a refinance, the 1003 loan application. If it isn't ready yet, submit the request anyway and choose "I'll send it later." Your escrow officer will follow up with a secure link.</p></details>
+    <details><summary>Is my escrow open once I submit?</summary><p>Not yet. Submitting sends your request to our team. Escrow is officially opened when your assigned officer confirms the order and issues an escrow number.</p></details>
+    <details><summary>How is my information protected?</summary><p>Contact and transaction details are sent to our team's secure system. Documents upload directly to our encrypted ShareFile portal and are never stored on this website.</p></details>
+    <details><summary>How quickly will I hear back?</summary><p>Escrow Logix opens orders the same day. The office is open Monday through Friday, 9am to 5pm Pacific, so a request sent after hours is picked up the next business day. You can always call <a href="tel:+18182351225">818.235.1225</a>.</p></details>
+    <details><summary>What kinds of escrow do you handle?</summary><p>Residential, commercial and industrial, refinance, vacant land, for sale by owner, probate, 1031 exchanges, short sales and REOs, tracts and new construction, and wholesale transactions. Most of these start as a purchase: choose Purchase Escrow and add the details in the notes. <a href="https://escrowlogix.com/services" target="_blank" rel="noopener">See all services</a>.</p></details>
+  </div>
+  <aside class="contact-card" aria-labelledby="talkTitle">
+    <img src="https://escrowlogix.com/airo-assets/images/pages/home/why-us-portrait" alt="" data-optional width="320" height="210" loading="lazy" decoding="async">
+    <div class="contact-body">
+      <h3 id="talkTitle">Prefer to talk it through?</h3>
+      <p>Call the office and a member of our team will help you get your escrow started.</p>
+      <a class="call-btn" href="tel:+18182351225">Call 818.235.1225</a>
+      <div class="contact-meta">
+        <span>Mon–Fri, 9am–5pm PT</span>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=16600+Sherman+Way+Ste+100+Van+Nuys+CA+91406" target="_blank" rel="noopener">16600 Sherman Way Ste 100, Van Nuys, CA 91406</a>
+        <span>After hours? <a href="https://escrowlogix.com/assistant" target="_blank" rel="noopener">Ask the 24/7 Assistant</a></span>
+      </div>
+    </div>
+  </aside>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <a class="brand" href="https://escrowlogix.com" target="_blank" rel="noopener" aria-label="Escrow Logix home">
+        <img class="logo" src="https://escrowlogix.com/airo-assets/images/logo/horizontal" alt="Escrow Logix" loading="lazy" decoding="async">
+        <span class="brand-fallback" aria-hidden="true">
+          <span class="brandmark"></span>
+          <span class="brandcopy"><strong>ESCROW LOGIX</strong><span>California Independent Escrow</span></span>
+        </span>
+      </a>
+      <p>Licensed &amp; bonded independent escrow company in California.</p>
+      <address>16600 Sherman Way Ste 100<br>Van Nuys, CA 91406</address>
+    </div>
+    <div class="footer-col">
+      <strong>Contact</strong>
+      <a href="tel:+18182351225">Phone 818.235.1225</a>
+      <span>Fax 818.235.5556</span>
+      <span>Mon–Fri, 9am–5pm PT</span>
+    </div>
+    <div class="footer-col">
+      <strong>Escrow Logix</strong>
+      <a href="https://escrowlogix.com/services" target="_blank" rel="noopener">Services</a>
+      <a href="https://escrowlogix.com/about" target="_blank" rel="noopener">About &amp; team</a>
+      <a href="https://escrowlogix.com/assistant" target="_blank" rel="noopener">24/7 Assistant</a>
+      <a href="https://escrowlogix.com/contact" target="_blank" rel="noopener">Contact</a>
+    </div>
+    <div class="footer-col">
+      <strong>This page</strong>
+      <a href="#app">Open escrow</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </div>
+  <p class="footnote" id="modeNote">Prototype mode: information entered on this page is not transmitted or stored. Production use requires approved ShareFile, CRM, analytics, privacy, and security configuration. Privacy policy and license details to be confirmed by Escrow Logix before launch.</p>
+</footer>
+
+<script>
+/* =========================================================
+   CONFIG — the only block that changes between prototype and production
+   ========================================================= */
+const CONFIG = {
+  crmEndpoint: "",                 // e.g. Pipedrive adapter / Zapier / Make webhook. Empty = prototype mode.
+  sharefile: {
+    purchase: "",                  // ShareFile Remote Upload Form URL for Purchase Contracts
+    refinance: ""                  // ShareFile Remote Upload Form URL for 1003s
+  },
+  reps: {                          // rep link slug (case, dashes and spaces ignored) -> name, or { name, title, photo }.
+                                   // Reps not listed here still work: "/JaneSmith" shows as "Jane Smith".
+    "andrea-kawawaki": {
+      name: "Andrea Kawawaki", title: "Senior Sales Representative",
+      photo: "https://escrowlogix.com/airo-assets/images/team/member-4-woman-desk"
+    }
+  },
+  basePath: "",                    // e.g. "/open-escrow" if this page doesn't live at the site root
+  reservedPaths: ["open","open-escrow","openescrow","contact","about","services","faq","privacy","assistant"],
+  source: "Website – Open Escrow"
+};
+
+/* ---------- Attribution: rep + UTM + referrer ---------- */
+const store = {
+  get(k){ try{ return JSON.parse(sessionStorage.getItem(k)); }catch(e){ return null; } },
+  set(k,v){ try{ sessionStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+};
+const repKey = s => String(s||"").toLowerCase().replace(/[^a-z0-9]/g,"");
+function nameFromSlug(s){
+  return String(s).replace(/([a-z])([A-Z])/g,"$1 $2").replace(/[-_.+]+/g," ").replace(/\s+/g," ").trim()
+    .toLowerCase().replace(/\b\w/g,c=>c.toUpperCase());
+}
+const repDirectory = Object.fromEntries(Object.entries(CONFIG.reps)
+  .map(([k,v])=>[repKey(k), typeof v==="string" ? {name:v} : v]));
+function readRepSlug(){
+  const q = new URLSearchParams(location.search).get("rep");
+  if(q) return q;
+  if(location.protocol === "file:") return null;          // opened from disk: the folder path isn't a rep
+  let path = location.pathname.replace(/\/index\.html?$/i,"");
+  // GitHub Pages test sites live under /<repo>/, so that folder counts as the base automatically
+  const base = (CONFIG.basePath || (location.hostname.endsWith(".github.io") ? "/" + (path.split("/")[1] || "") : "")).replace(/\/+$/,"");
+  if(base){
+    if(path.toLowerCase() !== base.toLowerCase() && !path.toLowerCase().startsWith(base.toLowerCase()+"/")) return null;
+    path = path.slice(base.length);
+  }
+  const p = path.split("/").filter(Boolean).map(s=>{ try{ return decodeURIComponent(s); }catch(e){ return s; } });
+  if(p.length>=2 && ["open","rep"].includes(p[0].toLowerCase())) return p[1];
+  if(p.length===1 && !/\.\w+$/.test(p[0]) && !CONFIG.reservedPaths.includes(p[0].toLowerCase())) return p[0];
+  return null;
+}
+function captureAttribution(){
+  const prior = store.get("elx_attr") || {};
+  const qs = new URLSearchParams(location.search);
+  const utm = {};
+  ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"].forEach(k=>{ if(qs.get(k)) utm[k]=qs.get(k); });
+  const saved = {
+    repRaw: readRepSlug() || prior.repRaw || null,
+    utm: Object.keys(utm).length ? utm : (prior.utm || {}),
+    referrer: prior.referrer || document.referrer || null,
+    landingPage: prior.landingPage || location.href,
+    firstSeen: prior.firstSeen || new Date().toISOString()
+  };
+  store.set("elx_attr", saved);
+  const key = repKey(saved.repRaw);
+  const rep = key ? (repDirectory[key] || {name: nameFromSlug(saved.repRaw)}) : {};
+  return { ...saved, repSlug: key || null, repName: rep.name || null, repTitle: rep.title || null, repPhoto: rep.photo || null };
+}
+const attribution = captureAttribution();
+if(attribution.repName){
+  const b = document.getElementById("repBadge");
+  b.style.display = "inline-flex";
+  if(attribution.repTitle) b.title = attribution.repTitle;
+  b.innerHTML = (attribution.repPhoto ? `<img src="${esc(attribution.repPhoto)}" alt="" width="34" height="34">` : "") +
+    `<span><small>Your Escrow Logix contact</small>${esc(attribution.repName)}</span>`;
+}
+
+/* ---------- State + navigation ---------- */
+const state = { type:null, step:1, ref:null };
+const form = document.getElementById("form");
+const panels = [...document.querySelectorAll(".panel")];
+const stepNames = ["Transaction type","Contact","Transaction details","Documents","Review","Submitted"];
+const isPurchase = () => state.type === "purchase";
+
+function showStep(n, focus=true){
+  state.step = n;
+  panels.forEach(p=>p.classList.toggle("active", Number(p.dataset.step)===n));
+  [...document.querySelectorAll("#steps li")].forEach((li,i)=>{
+    li.classList.toggle("done", i+1 < n);
+    li.classList.toggle("current", i+1 === n);
+    if(i+1===n) li.setAttribute("aria-current","step"); else li.removeAttribute("aria-current");
+  });
+  document.getElementById("liveStep").textContent = n<=5 ? `Step ${n} of 5: ${stepNames[n-1]}` : "Request submitted";
+  const app = document.getElementById("app");
+  if(app.getBoundingClientRect().top < 0 || app.getBoundingClientRect().top > innerHeight*0.6){
+    app.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
+  }
+  if(focus){ const h = panels.find(p=>Number(p.dataset.step)===n).querySelector("h3"); h && h.focus({preventScroll:true}); }
+}
+
+function setType(type){
+  state.type = type;
+  document.querySelectorAll(".choice").forEach(c=>c.setAttribute("aria-pressed", String(c.dataset.type===type)));
+  document.getElementById("next1").disabled = false;
+  // toggle type-specific fields (hidden fields are disabled so they aren't validated or submitted)
+  document.querySelectorAll("[data-for]").forEach(el=>{
+    const on = el.dataset.for === type;
+    el.hidden = !on;
+    el.querySelectorAll("input,select,textarea").forEach(i=>i.disabled = !on);
+  });
+  const doc = isPurchase() ? "Purchase Contract" : "1003 loan application";
+  document.getElementById("uploadTitle").textContent = "Upload your " + doc;
+  document.getElementById("docUploadedLabel").textContent = "I've uploaded the " + (isPurchase() ? "Purchase Contract" : "1003");
+  document.getElementById("docLine").textContent = "Your " + doc + " uploads straight to our encrypted ShareFile portal.";
+  mountShareFile();
+}
+
+function mountShareFile(){
+  const url = CONFIG.sharefile[state.type];
+  const box = document.getElementById("uploadBox");
+  const ph = document.getElementById("uploadPlaceholder");
+  const old = box.querySelector("iframe"); if(old) old.remove();
+  if(url){
+    ph.hidden = true;
+    const f = document.createElement("iframe");
+    f.src = url; f.title = "Secure document upload (ShareFile)"; f.loading = "lazy";
+    f.setAttribute("referrerpolicy","no-referrer");
+    box.appendChild(f);
+  }else{
+    ph.hidden = false;
+    document.getElementById("uploadText").textContent =
+      "The ShareFile Remote Upload Form for the " + (isPurchase() ? "Purchase Contract" : "1003") + " appears here once it's connected.";
+  }
+}
+
+document.querySelectorAll(".choice").forEach(btn=>{
+  btn.addEventListener("click",()=>setType(btn.dataset.type));
+  btn.addEventListener("dblclick",()=>{ setType(btn.dataset.type); showStep(2); });
+});
+document.querySelectorAll("[data-preset]").forEach(a=>{
+  a.addEventListener("click",()=>{ if(state.step===1) setType(a.dataset.preset); });
+});
+
+/* ---------- Validation ---------- */
+function validatePanel(n){
+  const panel = panels.find(p=>Number(p.dataset.step)===n);
+  let firstBad = null;
+  panel.querySelectorAll(".field").forEach(f=>f.classList.remove("invalid"));
+  panel.querySelectorAll("input,select,textarea").forEach(el=>{
+    if(el.disabled || el.type==="radio") return;
+    el.setAttribute("aria-invalid","false");
+    if(!el.checkValidity()){
+      el.setAttribute("aria-invalid","true");
+      const f = el.closest(".field"); if(f) f.classList.add("invalid");
+      firstBad = firstBad || el;
+    }
+  });
+  // radio groups marked required
+  panel.querySelectorAll("input[type=radio][required]").forEach(r=>{
+    if(!form.querySelector(`input[name="${r.name}"]:checked`)){
+      const f = r.closest(".field"); if(f) f.classList.add("invalid");
+      firstBad = firstBad || r;
+    }
+  });
+  if(firstBad) firstBad.focus();
+  return !firstBad;
+}
+form.addEventListener("input", e=>{
+  const f = e.target.closest(".field");
+  if(f && f.classList.contains("invalid") && e.target.checkValidity()){ f.classList.remove("invalid"); e.target.setAttribute("aria-invalid","false"); }
+});
+form.addEventListener("change", e=>{
+  if(e.target.type==="radio"){ const f=e.target.closest(".field"); if(f) f.classList.remove("invalid"); }
+  if(e.target.id==="consent"){ document.getElementById("consentBox").classList.remove("invalid"); document.getElementById("submitError").classList.remove("show"); }
+});
+
+// money formatting
+document.querySelectorAll("[data-money]").forEach(el=>{
+  el.addEventListener("blur",()=>{
+    const n = parseFloat(el.value.replace(/[^\d.]/g,""));
+    el.value = isNaN(n) ? "" : "$" + n.toLocaleString("en-US",{maximumFractionDigits:2});
+  });
+});
+// phone formatting
+document.getElementById("phone").addEventListener("blur",e=>{
+  const d = e.target.value.replace(/\D/g,"").replace(/^1(?=\d{10}$)/,"");
+  if(d.length===10) e.target.value = `(${d.slice(0,3)}) ${d.slice(3,6)}-${d.slice(6)}`;
+});
+
+document.querySelectorAll(".next").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const n = state.step;
+    if(n===1 && !state.type) return;
+    if(n>1 && !validatePanel(n)) return;
+    if(n===4) buildReview();
+    showStep(n+1);
+  });
+});
+document.querySelectorAll(".back").forEach(btn=>btn.addEventListener("click",()=>showStep(state.step-1)));
+
+/* ---------- Review ---------- */
+function esc(s){ return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m])); }
+function val(name){ const el = form.elements[name]; if(!el) return ""; if(el instanceof RadioNodeList) return el.value; return el.disabled ? "" : el.value.trim(); }
+function fmtDate(s){ if(!s) return ""; const [y,m,d]=s.split("-"); return `${m}/${d}/${y}`; }
+function buildReview(){
+  const addr = [val("street"), val("city"), [val("state"), val("zip")].filter(Boolean).join(" ")].filter(Boolean).join(", ");
+  const groups = [
+    ["Transaction", 1, [
+      ["Type", isPurchase() ? "Purchase Escrow" : "Refinance Escrow"]
+    ]],
+    ["Contact", 2, [
+      ["Name", `${val("firstName")} ${val("lastName")}`],
+      ["Email", val("email")], ["Phone", val("phone")],
+      ["Role", val("role")], ["Company", val("company")],
+      ["Preferred contact", val("contactPref")]
+    ]],
+    ["Property & terms", 3, [
+      ["Property", addr], ["Property type", val("propertyType")], ["APN", val("apn")],
+      ...(isPurchase() ? [
+        ["Purchase price", val("salePrice")], ["Initial deposit", val("deposit")],
+        ["Acceptance date", fmtDate(val("acceptanceDate"))], ["Target close", fmtDate(val("closeDate"))],
+        ["Buyer(s)", val("buyerNames")], ["Seller(s)", val("sellerNames")],
+        ["Financing", val("financing")], ["Other side's agent", val("otherAgent")]
+      ] : [
+        ["New loan amount", val("loanAmount")], ["Lender", val("lender")],
+        ["Borrower(s)", val("borrowerNames")], ["Loan officer", val("loanOfficer")],
+        ["Refinance type", val("refiType")], ["Target funding", fmtDate(val("fundDate"))]
+      ]),
+      ["Notes", val("notes")]
+    ]],
+    ["Documents", 4, [
+      [isPurchase() ? "Purchase Contract" : "1003", val("docStatus")]
+    ]]
+  ];
+  if(attribution.repName) groups[0][2].push(["Escrow Logix contact", attribution.repName + (attribution.repTitle ? ", " + attribution.repTitle : "")]);
+  document.getElementById("review").innerHTML = groups.map(([title, step, rows])=>
+    `<div class="review-group"><span>${esc(title)}</span><button type="button" data-goto="${step}">Edit</button></div>` +
+    rows.filter(([,v])=>v && String(v).trim()).map(([k,v])=>
+      `<div class="review-row"><div class="review-key">${esc(k)}</div><div class="review-val">${esc(v)}</div></div>`).join("")
+  ).join("");
+  document.querySelectorAll("[data-goto]").forEach(b=>b.onclick=()=>showStep(Number(b.dataset.goto)));
+}
+
+/* ---------- Payload + submit ---------- */
+function makeRef(){
+  const d = new Date();
+  const ds = d.getFullYear()+String(d.getMonth()+1).padStart(2,"0")+String(d.getDate()).padStart(2,"0");
+  const rnd = (crypto.getRandomValues ? [...crypto.getRandomValues(new Uint8Array(4))].map(b=>"ABCDEFGHJKLMNPQRSTUVWXYZ23456789"[b%32]).join("") : Math.random().toString(36).slice(2,6).toUpperCase());
+  return `ELX-${ds}-${rnd}`;
+}
+function money(name){ const n = parseFloat(val(name).replace(/[^\d.]/g,"")); return isNaN(n) ? null : n; }
+function buildPayload(){
+  return {
+    requestId: state.ref,
+    submittedAt: new Date().toISOString(),
+    source: CONFIG.source,
+    transactionType: isPurchase() ? "Purchase" : "Refinance",
+    contact: {
+      firstName: val("firstName"), lastName: val("lastName"),
+      email: val("email"), phone: val("phone"),
+      role: val("role"), company: val("company") || null,
+      preferredContact: val("contactPref")
+    },
+    property: {
+      street: val("street"), city: val("city"), state: val("state") || "CA", zip: val("zip"),
+      propertyType: val("propertyType") || null, apn: val("apn") || null
+    },
+    purchase: isPurchase() ? {
+      price: money("salePrice"), deposit: money("deposit"),
+      acceptanceDate: val("acceptanceDate") || null, targetCloseDate: val("closeDate") || null,
+      buyers: val("buyerNames") || null, sellers: val("sellerNames") || null,
+      financing: val("financing") || null, otherSideAgent: val("otherAgent") || null
+    } : null,
+    refinance: !isPurchase() ? {
+      loanAmount: money("loanAmount"), lender: val("lender"),
+      borrowers: val("borrowerNames") || null, loanOfficer: val("loanOfficer") || null,
+      refinanceType: val("refiType") || null, targetFundingDate: val("fundDate") || null
+    } : null,
+    documents: {
+      required: isPurchase() ? "Purchase Contract" : "1003",
+      status: val("docStatus"),
+      storage: "ShareFile"            // documents never travel in this payload
+    },
+    notes: val("notes") || null,
+    attribution: {
+      repSlug: attribution.repSlug, repName: attribution.repName,
+      utm: attribution.utm, referrer: attribution.referrer,
+      landingPage: attribution.landingPage, firstSeen: attribution.firstSeen
+    },
+    // populated later by Sales Manager review + RBJ CSV reconciliation
+    workflow: { stage: "New request", escrowOfficer: null, rbjEscrowNumber: null, rbjStatus: null }
+  };
+}
+
+form.addEventListener("submit", async e=>{
+  e.preventDefault();
+  const err = document.getElementById("submitError");
+  err.classList.remove("show");
+  if(!document.getElementById("consent").checked){
+    document.getElementById("consentBox").classList.add("invalid");
+    err.textContent = "Please confirm the statement above to submit.";
+    err.classList.add("show");
+    return;
+  }
+  if(val("website")) { showSuccess(); return; }   // bot: pretend success, send nothing
+  state.ref = state.ref || makeRef();
+  const payload = buildPayload();
+  const btn = document.getElementById("submitBtn");
+  if(CONFIG.crmEndpoint){
+    btn.disabled = true; btn.textContent = "Submitting…";
+    try{
+      const res = await fetch(CONFIG.crmEndpoint, { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(payload) });
+      if(!res.ok) throw new Error(res.status);
+    }catch(x){
+      btn.disabled = false; btn.textContent = "Submit escrow request";
+      err.innerHTML = 'We couldn\'t send your request. Please try again, or call <a href="tel:+18182351225">818.235.1225</a> and mention reference <b>' + esc(state.ref) + '</b>.';
+      err.classList.add("show");
+      return;
+    }
+  }
+  showSuccess(payload);
+});
+
+function showSuccess(payload){
+  document.getElementById("submissionRef").textContent = state.ref || makeRef();
+  const docSent = val("docStatus") === "Uploaded";
+  document.getElementById("nextDoc").textContent = docSent
+    ? "Your document is already with us, so there's nothing else you need to send right now."
+    : "Your officer will send a secure upload link for the " + (isPurchase() ? "Purchase Contract" : "1003") + ".";
+  if(!CONFIG.crmEndpoint){
+    document.getElementById("successText").textContent = "Prototype mode: this is exactly what a client will see after submitting. Nothing was transmitted or stored.";
+    if(payload){ document.getElementById("devBox").hidden = false; document.getElementById("payloadOut").textContent = JSON.stringify(payload, null, 2); }
+  }
+  showStep(6);
+}
+
+document.getElementById("startOver").addEventListener("click",()=>{
+  form.reset(); state.type=null; state.ref=null;
+  document.querySelectorAll(".choice").forEach(c=>c.setAttribute("aria-pressed","false"));
+  document.getElementById("next1").disabled = true;
+  document.getElementById("devBox").hidden = true;
+  const b = document.getElementById("submitBtn"); b.disabled=false; b.textContent="Submit escrow request";
+  showStep(1);
+});
+
+if(CONFIG.crmEndpoint) document.getElementById("modeNote").textContent = "Documents upload directly to Escrow Logix's encrypted ShareFile portal and are never stored on this website. License and privacy disclosures to be supplied by Escrow Logix.";
+// start with purchase-only fields hidden until a type is chosen
+document.querySelectorAll("[data-for]").forEach(el=>{ el.hidden = true; el.querySelectorAll("input,select,textarea").forEach(i=>i.disabled = true); });
+
+/* ---------- Brand assets: real logo + photos, with fallbacks ---------- */
+function onImage(img, ok, fail){
+  if(img.complete && img.getAttribute("src")){ (img.naturalWidth ? ok : fail)(); return; }
+  img.addEventListener("load", ok, {once:true});
+  img.addEventListener("error", fail, {once:true});
+}
+// Show the real logo once it loads; until then (or if it fails) the CSS mark + wordmark stays.
+document.querySelectorAll(".brand").forEach(brand=>{
+  const img = brand.querySelector(".logo");
+  if(img) onImage(img, ()=>brand.classList.add("logo-ok"), ()=>img.remove());
+});
+// If the logo artwork turns out to be dark, give it a light plate so it reads on the dark header.
+// Needs pixel access, so it only runs where the browser allows it (same site, or CORS); otherwise nothing changes.
+(function checkLogoTone(){
+  const src = document.querySelector(".brand .logo")?.src;
+  if(!src) return;
+  const probe = new Image();
+  probe.crossOrigin = "anonymous";
+  probe.onload = ()=>{
+    try{
+      const w = 96, h = Math.max(1, Math.round(w * probe.naturalHeight / probe.naturalWidth));
+      const c = document.createElement("canvas"); c.width = w; c.height = h;
+      const ctx = c.getContext("2d"); ctx.drawImage(probe, 0, 0, w, h);
+      const d = ctx.getImageData(0, 0, w, h).data;
+      let lum = 0, n = 0;
+      for(let i=0; i<d.length; i+=4){
+        if(d[i+3] < 128) continue;
+        lum += (.2126*d[i] + .7152*d[i+1] + .0722*d[i+2]) / 255; n++;
+      }
+      const solid = [0, (w-1)*4, (h-1)*w*4, (h*w-1)*4].every(i=>d[i+3] > 200);
+      const cls = solid ? "logo-boxed" : (n && lum/n < .45 ? "logo-plate" : null);
+      if(cls) document.querySelectorAll(".brand").forEach(b=>b.classList.add(cls));
+    }catch(e){ /* cross-origin without CORS: keep the default look */ }
+  };
+  probe.src = src;
+})();
+// Team headshots fall back to initials; optional photos simply drop out.
+document.querySelectorAll("img[data-initials]").forEach(img=>onImage(img, ()=>{}, ()=>{
+  const s = document.createElement("span");
+  s.className = "initials"; s.setAttribute("aria-hidden","true"); s.textContent = img.dataset.initials;
+  img.replaceWith(s);
+}));
+document.querySelectorAll("img[data-optional], .rep img").forEach(img=>onImage(img, ()=>{}, ()=>img.remove()));
+</script>
+</body>
+</html>
