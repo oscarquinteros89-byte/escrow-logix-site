@@ -88,6 +88,10 @@ a{color:inherit}
   background:var(--gold);color:var(--black);font-size:12px;font-weight:850;letter-spacing:.03em;
 }
 .cta-top:hover{background:var(--gold-2)}
+/* Phone-only call button (the number shows as text above 640px) */
+.call-top{display:none;place-items:center;flex:none;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--gold);color:var(--gold-2);text-decoration:none}
+.call-top svg{width:18px;height:18px}
+.call-top:hover{background:rgba(202,164,93,.14)}
 
 /* ---------- Hero ---------- */
 .hero{
@@ -380,8 +384,13 @@ textarea{min-height:95px;resize:vertical}
 @media(max-width:640px){
   .topbar{padding:0 16px}
   .phone{display:none}
-  .cta-top{padding:9px 13px;font-size:11px}
+  .cta-top{padding:14px 13px;font-size:11px}
   .topbar .brandcopy span{display:none}
+  .call-top{display:grid}
+  .top-actions{gap:10px}
+  .cta-top{white-space:nowrap}
+  .topbar{gap:8px}
+  .topbar .brandcopy strong{font-size:15px;letter-spacing:.1em;white-space:nowrap}
   .topbar .brand .logo{width:38px;height:38px}
   .team{grid-template-columns:1fr}
   .hero{min-height:560px;background-position:68% center}
@@ -403,6 +412,16 @@ textarea{min-height:95px;resize:vertical}
   .btn{width:100%}
   .wire{flex-direction:column}
   .trust-copy{padding:28px}
+}
+/* Narrow phones: step the wordmark down so logo, wordmark, Call and Open Escrow stay on one row */
+@media(max-width:389px){.topbar .brandcopy strong{font-size:14px;letter-spacing:.08em}}
+@media(max-width:369px){.topbar .brandcopy strong{font-size:13px;letter-spacing:.06em}}
+@media(max-width:359px){
+  .topbar .brand{gap:8px}
+  .topbar .brand .logo{width:32px;height:32px}
+  .topbar .brandcopy strong{font-size:11.5px;letter-spacing:.03em;white-space:nowrap}
+  .cta-top{padding:14px 10px;letter-spacing:0}
+  .top-actions{gap:8px}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -441,6 +460,7 @@ textarea{min-height:95px;resize:vertical}
       <a href="#faq">FAQ</a>
     </nav>
     <a class="phone" id="phoneTop" href="tel:+18182351225">Questions? <b>818.235.1225</b></a>
+    <a class="call-top" href="tel:+18182351225" aria-label="Call Escrow Logix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></a>
     <a class="cta-top" href="#app">Open Escrow</a>
   </div>
 </header>
@@ -593,12 +613,12 @@ textarea{min-height:95px;resize:vertical}
             <option>Vacant land</option>
           </select>
         </div>
-        <div class="field"><label for="apn">APN <span class="hint">(if known)</span></label><input id="apn" name="apn"></div>
+        <div class="field"><label for="apn">APN <span class="hint">(if known)</span></label><input id="apn" name="apn" aria-describedby="apnHint"><span class="hint" id="apnHint">Assessor's Parcel Number, found on the property tax bill or the title report.</span></div>
 
         <!-- Purchase-only -->
         <div class="subhead" data-for="purchase">Purchase details</div>
         <div class="field" data-for="purchase"><label for="salePrice">Purchase price <span class="req">*</span></label><input id="salePrice" name="salePrice" inputmode="decimal" placeholder="$" data-money required><span class="err">Please enter the purchase price.</span></div>
-        <div class="field" data-for="purchase"><label for="deposit">Initial deposit (EMD)</label><input id="deposit" name="deposit" inputmode="decimal" placeholder="$" data-money></div>
+        <div class="field" data-for="purchase"><label for="deposit">Initial deposit (EMD)</label><input id="deposit" name="deposit" inputmode="decimal" placeholder="$" data-money aria-describedby="depositHint"><span class="hint" id="depositHint">Earnest money deposit, the buyer's good-faith deposit.</span></div>
         <div class="field" data-for="purchase"><label for="acceptanceDate">Acceptance date</label><input id="acceptanceDate" name="acceptanceDate" type="date"></div>
         <div class="field" data-for="purchase"><label for="closeDate">Target close of escrow</label><input id="closeDate" name="closeDate" type="date"></div>
         <div class="field" data-for="purchase"><label for="buyerNames">Buyer name(s)</label><input id="buyerNames" name="buyerNames"></div>
