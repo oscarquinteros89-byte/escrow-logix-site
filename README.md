@@ -17,6 +17,10 @@ A test copy of the Escrow Logix open-escrow intake page (prototype V0.3), hosted
 
 ## Notes
 
-- Brand images (logo, photos, team) load live from escrowlogix.com.
+- Brand images live in `images/` and are loaded by relative path, so **the `images/` folder must always travel with `index.html`** (and `404.html`) when the site is copied or hosted elsewhere.
+  - `images/hero.jpg`, `images/team-group.jpg`, `images/contact-portrait.jpg`, `images/logo-e-monogram.png`: web-sized copies.
+  - `images/team/<first-last>.jpg`: 320×320 headshots cropped on each person's face for the round team photos and the rep badge.
+  - `images/originals/`: the untouched files downloaded from escrowlogix.com, kept for re-cropping.
+  - Only the `og:image` link-preview tag still points at escrowlogix.com, since it needs a full URL.
 - The page tells search engines not to list it. Remove the `robots` meta tag at launch.
 - Sensitive documents never go through this page or the CRM. They go straight to ShareFile once its upload form is connected.

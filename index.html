@@ -13,8 +13,7 @@
 <meta property="og:image" content="https://escrowlogix.com/airo-assets/images/pages/home/hero">
 <meta property="og:image:alt" content="Modern luxury hillside residence at golden hour">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://escrowlogix.com">
-<link rel="preload" as="image" href="https://escrowlogix.com/airo-assets/images/pages/home/hero">
+<link rel="preload" as="image" href="images/hero.jpg">
 <title>Open Escrow | Escrow Logix</title>
 <style>
 :root{
@@ -95,7 +94,7 @@ a{color:inherit}
   position:relative;min-height:540px;color:white;overflow:hidden;
   background:
     linear-gradient(90deg,rgba(11,12,13,.94) 0%,rgba(11,12,13,.80) 43%,rgba(11,12,13,.25) 75%,rgba(11,12,13,.08) 100%),
-    url("https://escrowlogix.com/airo-assets/images/pages/home/hero") center/cover no-repeat,
+    url("images/hero.jpg") center/cover no-repeat,
     radial-gradient(1200px 600px at 85% 30%,#4a3f2c 0%,#23272b 45%,#111315 100%);
 }
 .hero-inner{width:min(1180px,92vw);margin:auto;min-height:540px;display:flex;align-items:center}
@@ -310,7 +309,7 @@ textarea{min-height:95px;resize:vertical}
   min-height:290px;
   background:
     linear-gradient(90deg,rgba(17,19,21,.05),rgba(17,19,21,.33)),
-    url("https://escrowlogix.com/airo-assets/images/pages/home/team-group") center/cover no-repeat,
+    url("images/team-group.jpg") center 22%/cover no-repeat,
     linear-gradient(135deg,#3a3326,#191c1f);
 }
 .trust-copy{padding:34px 38px;display:flex;flex-direction:column;justify-content:center}
@@ -332,7 +331,7 @@ textarea{min-height:95px;resize:vertical}
 .faq-wrap{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:44px;align-items:start;margin-top:22px}
 .faq-list{border-top:1px solid var(--line)}
 .contact-card{position:sticky;top:96px;background:white;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 16px 40px rgba(17,19,21,.06)}
-.contact-card img{display:block;width:100%;height:210px;object-fit:cover;object-position:center 22%}
+.contact-card img{display:block;width:100%;height:210px;object-fit:cover;object-position:center 0%}
 .contact-body{padding:22px}
 .contact-body h3{margin:0 0 6px;color:var(--charcoal);font-size:19px;letter-spacing:-.02em}
 .contact-body p{margin:0 0 16px;color:var(--muted);font-size:13px;line-height:1.55}
@@ -423,15 +422,16 @@ textarea{min-height:95px;resize:vertical}
   With crmEndpoint empty the page runs in prototype mode: nothing is transmitted or stored.
   Sensitive documents never touch this page or the CRM; they go straight to ShareFile.
 
-  BRAND ASSETS load from Escrow Logix's live site (search this file for "airo-assets"):
-    logo/horizontal · pages/home/hero · pages/home/team-group · pages/home/why-us-portrait · team/member-1…4
-  Every image has a fallback (CSS logo mark, gradients, initials), so the page still looks
-  finished if one fails to load. To self-host, download those files and swap the URLs.
+  BRAND ASSETS live in the images/ folder next to this file (relative paths, so the folder must travel with it):
+    logo-e-monogram.png · hero.jpg · team-group.jpg · contact-portrait.jpg · team/<first-last>.jpg (320px face crops)
+  images/originals/ keeps the untouched files from escrowlogix.com. Only og:image still points at
+  escrowlogix.com, because link previews need a full URL. Every image has a fallback (CSS logo mark,
+  gradients, initials), so the page still looks finished if one fails to load.
 -->
 
 <header class="topbar">
   <a class="brand" href="https://escrowlogix.com" target="_blank" rel="noopener" aria-label="Escrow Logix home">
-    <img class="logo" src="https://escrowlogix.com/airo-assets/images/logo/horizontal" alt="" width="44" height="44" decoding="async">
+    <img class="logo" src="images/logo-e-monogram.png" alt="" width="44" height="44" decoding="async">
     <span class="brandmark" aria-hidden="true"></span>
     <span class="brandcopy" aria-hidden="true"><strong>ESCROW LOGIX</strong><span>California Independent Escrow</span></span>
   </a>
@@ -710,10 +710,10 @@ textarea{min-height:95px;resize:vertical}
     <h3>People who treat your transaction like their own.</h3>
     <p>A dedicated escrow officer on every file, real-time status updates at each milestone, and a real person reviewing every request before your escrow is opened.</p>
     <ul class="team" aria-label="The Escrow Logix team">
-      <li class="member"><img src="https://escrowlogix.com/airo-assets/images/team/member-1-man" alt="" data-initials="JL" width="48" height="48" loading="lazy" decoding="async"><div><strong>James Lough</strong><span>Escrow Manager / Senior Escrow Officer</span></div></li>
-      <li class="member"><img src="https://escrowlogix.com/airo-assets/images/team/member-2-glasses" alt="" data-initials="AO" width="48" height="48" loading="lazy" decoding="async"><div><strong>Aidan Odel</strong><span>Escrow Officer</span></div></li>
-      <li class="member"><img src="https://escrowlogix.com/airo-assets/images/team/member-3-woman-crossed" alt="" data-initials="YM" width="48" height="48" loading="lazy" decoding="async"><div><strong>Yesenia Meza</strong><span>Escrow Assistant</span></div></li>
-      <li class="member"><img src="https://escrowlogix.com/airo-assets/images/team/member-4-woman-desk" alt="" data-initials="AK" width="48" height="48" loading="lazy" decoding="async"><div><strong>Andrea Kawawaki</strong><span>Senior Sales Representative</span></div></li>
+      <li class="member"><img src="images/team/james-lough.jpg" alt="" data-initials="JL" width="48" height="48" loading="lazy" decoding="async"><div><strong>James Lough</strong><span>Escrow Manager / Senior Escrow Officer</span></div></li>
+      <li class="member"><img src="images/team/aidan-odel.jpg" alt="" data-initials="AO" width="48" height="48" loading="lazy" decoding="async"><div><strong>Aidan Odel</strong><span>Escrow Officer</span></div></li>
+      <li class="member"><img src="images/team/yesenia-meza.jpg" alt="" data-initials="YM" width="48" height="48" loading="lazy" decoding="async"><div><strong>Yesenia Meza</strong><span>Escrow Assistant</span></div></li>
+      <li class="member"><img src="images/team/andrea-kawawaki.jpg" alt="" data-initials="AK" width="48" height="48" loading="lazy" decoding="async"><div><strong>Andrea Kawawaki</strong><span>Senior Sales Representative</span></div></li>
     </ul>
     <a class="reviews" href="https://www.google.com/search?q=Escrow+Logix+reviews" target="_blank" rel="noopener"><span class="stars" aria-hidden="true">★★★★★</span> 5.0 on Google Reviews <span aria-hidden="true">→</span></a>
   </div>
@@ -732,7 +732,7 @@ textarea{min-height:95px;resize:vertical}
     <details><summary>What kinds of escrow do you handle?</summary><p>Residential, commercial and industrial, refinance, vacant land, for sale by owner, probate, 1031 exchanges, short sales and REOs, tracts and new construction, and wholesale transactions. Most of these start as a purchase: choose Purchase Escrow and add the details in the notes. <a href="https://escrowlogix.com/services" target="_blank" rel="noopener">See all services</a>.</p></details>
   </div>
   <aside class="contact-card" aria-labelledby="talkTitle">
-    <img src="https://escrowlogix.com/airo-assets/images/pages/home/why-us-portrait" alt="" data-optional width="320" height="210" loading="lazy" decoding="async">
+    <img src="images/contact-portrait.jpg" alt="" data-optional width="320" height="210" loading="lazy" decoding="async">
     <div class="contact-body">
       <h3 id="talkTitle">Prefer to talk it through?</h3>
       <p>Call the office and a member of our team will help you get your escrow started.</p>
@@ -751,7 +751,7 @@ textarea{min-height:95px;resize:vertical}
   <div class="footer-inner">
     <div>
       <a class="brand" href="https://escrowlogix.com" target="_blank" rel="noopener" aria-label="Escrow Logix home">
-        <img class="logo" src="https://escrowlogix.com/airo-assets/images/logo/horizontal" alt="" width="44" height="44" decoding="async">
+        <img class="logo" src="images/logo-e-monogram.png" alt="" width="44" height="44" decoding="async">
         <span class="brandmark" aria-hidden="true"></span>
         <span class="brandcopy" aria-hidden="true"><strong>ESCROW LOGIX</strong><span>California Independent Escrow</span></span>
       </a>
@@ -795,7 +795,7 @@ const CONFIG = {
                                    // Reps not listed here still work: "/JaneSmith" shows as "Jane Smith".
     "andrea-kawawaki": {
       name: "Andrea Kawawaki", title: "Senior Sales Representative",
-      photo: "https://escrowlogix.com/airo-assets/images/team/member-4-woman-desk"
+      photo: "images/team/andrea-kawawaki.jpg"
     }
   },
   basePath: "",                    // e.g. "/open-escrow" if this page doesn't live at the site root
