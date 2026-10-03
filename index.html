@@ -61,13 +61,10 @@ a{color:inherit}
   color:white;
 }
 .brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:white}
-/* Real Escrow Logix logo; the CSS mark + wordmark below is only the fallback if it can't load */
-.brand .logo{display:none;height:40px;width:auto;max-width:230px;object-fit:contain}
-.brand.logo-ok .logo{display:block}
-.brand.logo-ok .brand-fallback{display:none}
-.brand.logo-plate .logo{box-sizing:content-box;padding:6px 12px;border-radius:10px;background:var(--cream)}
-.brand.logo-boxed .logo{border-radius:8px}
-.brand-fallback{display:flex;align-items:center;gap:14px}
+/* Escrow Logix's "E" monogram sits next to the wordmark; the CSS ring mark only shows if the image can't load */
+.brand .logo{display:block;width:44px;height:44px;object-fit:contain;flex:none}
+.brand .brandmark{display:none}
+.brand.logo-failed .brandmark{display:block}
 .brandmark{
   width:42px;height:42px;border-radius:50%;flex:none;
   position:relative;
@@ -359,7 +356,7 @@ textarea{min-height:95px;resize:vertical}
 .footer-inner{width:min(1080px,90vw);margin:0 auto;display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
 .footer .brand{margin-bottom:12px}
 .footer-inner p{margin:0;font-size:12px;line-height:1.6;max-width:340px}
-.footer .brand .logo{height:44px}
+.footer .brand .logo{width:48px;height:48px}
 .footer address{margin-top:12px;font-style:normal;font-size:12px;line-height:1.6;color:#cfc8bb}
 .footer-col strong{display:block;color:white;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
 .footer-col a,.footer-col span{display:block;color:#cfc8bb;text-decoration:none;font-size:13px;margin:6px 0}
@@ -386,7 +383,7 @@ textarea{min-height:95px;resize:vertical}
   .phone{display:none}
   .cta-top{padding:9px 13px;font-size:11px}
   .brandcopy span{display:none}
-  .topbar .brand .logo{height:32px;max-width:150px}
+  .topbar .brand .logo{width:38px;height:38px}
   .team{grid-template-columns:1fr}
   .hero{min-height:560px;background-position:68% center}
   .hero-inner{min-height:560px}
@@ -434,11 +431,9 @@ textarea{min-height:95px;resize:vertical}
 
 <header class="topbar">
   <a class="brand" href="https://escrowlogix.com" target="_blank" rel="noopener" aria-label="Escrow Logix home">
-    <img class="logo" src="https://escrowlogix.com/airo-assets/images/logo/horizontal" alt="Escrow Logix" decoding="async">
-    <span class="brand-fallback" aria-hidden="true">
-      <span class="brandmark"></span>
-      <span class="brandcopy"><strong>ESCROW LOGIX</strong><span>California Independent Escrow</span></span>
-    </span>
+    <img class="logo" src="https://escrowlogix.com/airo-assets/images/logo/horizontal" alt="" width="44" height="44" decoding="async">
+    <span class="brandmark" aria-hidden="true"></span>
+    <span class="brandcopy" aria-hidden="true"><strong>ESCROW LOGIX</strong><span>California Independent Escrow</span></span>
   </a>
   <div class="top-actions">
     <nav class="navlinks" aria-label="Page sections">
@@ -756,11 +751,9 @@ textarea{min-height:95px;resize:vertical}
   <div class="footer-inner">
     <div>
       <a class="brand" href="https://escrowlogix.com" target="_blank" rel="noopener" aria-label="Escrow Logix home">
-        <img class="logo" src="https://escrowlogix.com/airo-assets/images/logo/horizontal" alt="Escrow Logix" loading="lazy" decoding="async">
-        <span class="brand-fallback" aria-hidden="true">
-          <span class="brandmark"></span>
-          <span class="brandcopy"><strong>ESCROW LOGIX</strong><span>California Independent Escrow</span></span>
-        </span>
+        <img class="logo" src="https://escrowlogix.com/airo-assets/images/logo/horizontal" alt="" width="44" height="44" decoding="async">
+        <span class="brandmark" aria-hidden="true"></span>
+        <span class="brandcopy" aria-hidden="true"><strong>ESCROW LOGIX</strong><span>California Independent Escrow</span></span>
       </a>
       <p>Licensed &amp; bonded independent escrow company in California.</p>
       <address>16600 Sherman Way Ste 100<br>Van Nuys, CA 91406</address>
@@ -1142,36 +1135,10 @@ function onImage(img, ok, fail){
   img.addEventListener("load", ok, {once:true});
   img.addEventListener("error", fail, {once:true});
 }
-// Show the real logo once it loads; until then (or if it fails) the CSS mark + wordmark stays.
-document.querySelectorAll(".brand").forEach(brand=>{
-  const img = brand.querySelector(".logo");
-  if(img) onImage(img, ()=>brand.classList.add("logo-ok"), ()=>img.remove());
-});
-// If the logo artwork turns out to be dark, give it a light plate so it reads on the dark header.
-// Needs pixel access, so it only runs where the browser allows it (same site, or CORS); otherwise nothing changes.
-(function checkLogoTone(){
-  const src = document.querySelector(".brand .logo")?.src;
-  if(!src) return;
-  const probe = new Image();
-  probe.crossOrigin = "anonymous";
-  probe.onload = ()=>{
-    try{
-      const w = 96, h = Math.max(1, Math.round(w * probe.naturalHeight / probe.naturalWidth));
-      const c = document.createElement("canvas"); c.width = w; c.height = h;
-      const ctx = c.getContext("2d"); ctx.drawImage(probe, 0, 0, w, h);
-      const d = ctx.getImageData(0, 0, w, h).data;
-      let lum = 0, n = 0;
-      for(let i=0; i<d.length; i+=4){
-        if(d[i+3] < 128) continue;
-        lum += (.2126*d[i] + .7152*d[i+1] + .0722*d[i+2]) / 255; n++;
-      }
-      const solid = [0, (w-1)*4, (h-1)*w*4, (h*w-1)*4].every(i=>d[i+3] > 200);
-      const cls = solid ? "logo-boxed" : (n && lum/n < .45 ? "logo-plate" : null);
-      if(cls) document.querySelectorAll(".brand").forEach(b=>b.classList.add(cls));
-    }catch(e){ /* cross-origin without CORS: keep the default look */ }
-  };
-  probe.src = src;
-})();
+// The "E" monogram shows by default; if it can't load, the CSS ring mark takes its place.
+document.querySelectorAll(".brand .logo").forEach(img=>onImage(img, ()=>{}, ()=>{
+  img.closest(".brand").classList.add("logo-failed"); img.remove();
+}));
 // Team headshots fall back to initials; optional photos simply drop out.
 document.querySelectorAll("img[data-initials]").forEach(img=>onImage(img, ()=>{}, ()=>{
   const s = document.createElement("span");
