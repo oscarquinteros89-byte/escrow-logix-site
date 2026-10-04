@@ -34,12 +34,15 @@ struct HomeView: View {
                     }
                     .coordinateSpace(.named("home"))
                     .scrollIndicators(.hidden)
+                    .hidesTopScrollEdgeEffect(barProgress < 0.5)
                     .background(Palette.bg)
+                    // Only the scroll view runs under the bar, so safeTop above still measures
+                    // the status bar plus the navigation bar.
+                    .ignoresSafeArea(edges: .top)
                     .onAppear { scroll(proxy) }
                     .onChange(of: app.scrollAnchor) { _, _ in scroll(proxy) }
                 }
             }
-            .ignoresSafeArea(edges: .top)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
@@ -58,6 +61,11 @@ struct HomeView: View {
             .toolbarBackground(Brand.black.opacity(0.96 * barProgress), for: .navigationBar)
             .toolbarColorScheme(.dark, for: .navigationBar)
         }
+    }
+
+    /// Height of the inline navigation bar: taller on iOS 26.
+    private static var barHeight: CGFloat {
+        if #available(iOS 26.0, *) { 54 } else { 44 }
     }
 
     /// The bar darkens over the 64 points after the hero starts moving.
@@ -96,9 +104,10 @@ struct HomeView: View {
 
     private func hero(safeTop: CGFloat) -> some View {
         VStack(alignment: .leading, spacing: 0) {
+            // Sits in the navigation bar's row, level with the call button, under the status bar.
             Lockup()
-                .frame(height: 44)
-                .padding(.top, max(safeTop - 44, 20))
+                .frame(height: Self.barHeight)
+                .padding(.top, max(safeTop - Self.barHeight, 20))
 
             VStack(alignment: .leading, spacing: 0) {
                 HStack(spacing: 9) {
@@ -202,6 +211,19 @@ struct HomeView: View {
             .multilineTextAlignment(.center)
             .frame(maxWidth: .infinity)
             .padding(.top, 28)
+        }
+    }
+}
+
+private extension View {
+    /// On iOS 26 the bar blurs whatever scrolls under it, which smeared the hero's logo.
+    /// The blur stays off while the hero is at the top and comes back once the page scrolls.
+    @ViewBuilder
+    func hidesTopScrollEdgeEffect(_ hidden: Bool) -> some View {
+        if #available(iOS 26.0, *) {
+            scrollEdgeEffectHidden(hidden, for: .top)
+        } else {
+            self
         }
     }
 }
