@@ -25,7 +25,7 @@ struct HomeView: View {
                         }
                         .background(alignment: .top) {
                             GeometryReader { content in
-                                let progress = Self.barProgress(offset: content.frame(in: .named("home")).minY)
+                                let progress = Self.progress(forOffset: content.frame(in: .named("home")).minY)
                                 Color.clear
                                     .onAppear { barProgress = progress }
                                     .onChange(of: progress) { _, value in barProgress = value }
@@ -61,7 +61,7 @@ struct HomeView: View {
     }
 
     /// The bar darkens over the 64 points after the hero starts moving.
-    private static func barProgress(offset: CGFloat) -> Double {
+    private static func progress(forOffset offset: CGFloat) -> Double {
         let value = (-offset - 24) / 64
         return (min(max(value, 0), 1) * 10).rounded() / 10
     }

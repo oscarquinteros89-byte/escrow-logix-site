@@ -41,8 +41,8 @@ enum DemoMode {
             app.requests.replaceAll(sent: [], draft: sampleDraft)
             present { app.startIntake(.purchase) }
         default:
-            if let intake = intake(for: screen, app: app) {
-                present { app.activeIntake = intake }
+            if let model = intake(for: screen, app: app) {
+                present { app.activeIntake = model }
             }
         }
     }

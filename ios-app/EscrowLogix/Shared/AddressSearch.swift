@@ -23,14 +23,14 @@ final class AddressSearch: NSObject, MKLocalSearchCompleterDelegate {
     }
 
     private(set) var suggestions: [Suggestion] = []
-    private let completer = MKLocalSearchCompleter()
+    private let searchCompleter = MKLocalSearchCompleter()
     @ObservationIgnored private var lastQuery = ""
 
     override init() {
         super.init()
-        completer.delegate = self
-        completer.resultTypes = .address
-        completer.region = MKCoordinateRegion(
+        searchCompleter.delegate = self
+        searchCompleter.resultTypes = .address
+        searchCompleter.region = MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: 34.19, longitude: -118.45),
             span: MKCoordinateSpan(latitudeDelta: 4, longitudeDelta: 4)
         )
@@ -41,15 +41,15 @@ final class AddressSearch: NSObject, MKLocalSearchCompleterDelegate {
         guard trimmed != lastQuery else { return }
         lastQuery = trimmed
         if trimmed.count < 3 {
-            completer.cancel()
+            searchCompleter.cancel()
             suggestions = []
         } else {
-            completer.queryFragment = trimmed
+            searchCompleter.queryFragment = trimmed
         }
     }
 
     func clear() {
-        completer.cancel()
+        searchCompleter.cancel()
         lastQuery = ""
         suggestions = []
     }
