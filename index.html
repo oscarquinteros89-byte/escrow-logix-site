@@ -287,6 +287,10 @@ textarea{min-height:95px;resize:vertical}
 .success p{max-width:630px;margin:10px auto 0;color:var(--muted);line-height:1.65}
 .refbox{display:inline-block;margin-top:22px;padding:12px 17px;border:1px solid var(--line);border-radius:12px;color:var(--muted);font-size:11px}
 .refbox strong{display:block;color:var(--charcoal);font-size:16px;margin-top:4px;letter-spacing:.04em}
+.refbox.doc-ref{display:block;margin:-8px 0 22px}
+.refbox.doc-ref .hint{margin:6px 0 0}
+.sender-fields{margin-top:18px}
+.sender-fields .hint.helper{margin:10px 0 0}
 .next-list{max-width:560px;margin:26px auto 0;text-align:left;display:grid;gap:10px}
 .next-list div{display:flex;gap:12px;align-items:flex-start;font-size:13px;color:#4d5056;line-height:1.5}
 .next-list b{flex:none;width:24px;height:24px;border-radius:50%;background:var(--cream);color:var(--gold-dark);display:grid;place-items:center;font-size:11px}
@@ -434,6 +438,7 @@ textarea{min-height:95px;resize:vertical}
   Single-file page for GoDaddy Airo (or any static host). All integration
   points live in the CONFIG object at the top of the <script> block:
     • crmEndpoint        – webhook URL that receives the JSON payload (Pipedrive / Zapier / Make / custom adapter)
+    • crmSendAs          – how the form posts: "json" (application/json), "text" (JSON as text/plain) or "form" (field "payload")
     • sharefile.purchase – ShareFile Remote Upload Form URL for Purchase Contracts
     • sharefile.refinance– ShareFile Remote Upload Form URL for 1003s
     • reps               – optional directory of reps (name, title, photo); unknown rep links still pass through
@@ -647,23 +652,23 @@ textarea{min-height:95px;resize:vertical}
     <!-- STEP 4 -->
     <section class="panel" data-step="4" aria-labelledby="h4s">
       <h3 id="h4s" tabindex="-1">Send your document securely.</h3>
-      <p class="sub" id="uploadSub">Upload through our encrypted portal below. Files go directly to Escrow Logix and never pass through this website.</p>
+      <p class="sub" id="uploadSub">ShareFile upload is not connected in this demo. You can submit the request and send the document later using a secure link from your escrow team.</p>
+      <div class="refbox doc-ref" id="docRefBox">Your request reference<strong id="docRef"></strong><p class="hint" id="docRefHint" hidden>Type it in the upload form's Request reference box so we can match your file.</p></div>
       <div class="uploadgrid">
         <div class="upload" id="uploadBox">
           <div id="uploadPlaceholder">
             <div class="upload-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
-            <h4 id="uploadTitle">Secure document upload</h4>
-            <p id="uploadText">The ShareFile Remote Upload Form appears here once it's connected.</p>
-            <div class="placeholder">SHAREFILE REMOTE UPLOAD FORM</div>
+            <h4 id="uploadTitle">Document upload isn't connected</h4>
+            <p id="uploadText">This demo does not accept files. Submit the request and your escrow team can provide a secure upload link.</p>
+            <div class="placeholder">SHAREFILE NOT CONNECTED IN DEMO</div>
           </div>
         </div>
         <aside class="security">
           <h4>Protected by design.</h4>
-          <p>Your documents are handled differently from the rest of this form.</p>
+          <p id="uploadSecurityText">File upload is not enabled here yet. Please don't try to send sensitive documents through this demo.</p>
           <ul>
-            <li id="docLine">Purchase Contracts and 1003s upload straight to our encrypted ShareFile portal.</li>
-            <li>This website never stores your documents.</li>
-            <li>Only the Escrow Logix team can access what you upload.</li>
+            <li id="docLine">When connected, the ShareFile form will send documents directly to ShareFile.</li>
+            <li>ShareFile access will depend on Escrow Logix account permissions.</li>
             <li>Please don't upload bank statements, ID, or wiring details here unless your escrow officer asks.</li>
           </ul>
         </aside>
@@ -671,11 +676,18 @@ textarea{min-height:95px;resize:vertical}
       <div class="field full doc-status">
         <span class="label">Document status <span class="req">*</span></span>
         <div class="seg-group" role="radiogroup" aria-label="Document status">
-          <label><input type="radio" name="docStatus" value="Uploaded" required> <span id="docUploadedLabel">I've uploaded it above</span></label>
+          <label><input id="docUploadedChoice" type="radio" name="docStatus" value="Uploaded" required disabled> <span id="docUploadedLabel">Upload isn't available in this demo</span></label>
           <label><input type="radio" name="docStatus" value="Sending later"> I'll send it later</label>
           <label><input type="radio" name="docStatus" value="Agent/lender will send"> My agent or lender will send it</label>
         </div>
         <span class="err">Please choose one so we know what to expect.</span>
+      </div>
+      <div class="sender-fields" id="senderFields" hidden>
+        <div class="formgrid">
+          <div class="field"><label for="senderName">Who's sending it? <span class="hint">(optional)</span></label><input id="senderName" name="senderName" autocomplete="off" placeholder="Name"></div>
+          <div class="field"><label for="senderEmail">Their email <span class="hint">(optional)</span></label><input id="senderEmail" name="senderEmail" type="email" inputmode="email" autocomplete="off" placeholder="name@company.com"><span class="err">Please enter a valid email address.</span></div>
+        </div>
+        <p class="hint helper">Optional. Helps us follow up on the document.</p>
       </div>
       <div class="actions"><button class="btn secondary back" type="button">Back</button><button class="btn primary next" type="button">Continue to review</button></div>
     </section>
@@ -807,6 +819,7 @@ textarea{min-height:95px;resize:vertical}
    ========================================================= */
 const CONFIG = {
   crmEndpoint: "",                 // e.g. Pipedrive adapter / Zapier / Make webhook. Empty = prototype mode.
+  crmSendAs: "json",               // how the form posts: "json" (needs a CORS-ready connector), "text" or "form" (no preflight; e.g. Zapier catch hook)
   sharefile: {
     purchase: "",                  // ShareFile Remote Upload Form URL for Purchase Contracts
     refinance: ""                  // ShareFile Remote Upload Form URL for 1003s
@@ -893,6 +906,12 @@ function showStep(n, focus=true){
     if(i+1===n) li.setAttribute("aria-current","step"); else li.removeAttribute("aria-current");
   });
   document.getElementById("liveStep").textContent = n<=5 ? `Step ${n} of 5: ${stepNames[n-1]}` : "Request submitted";
+  if(n===4){
+    // the reference exists from the Documents step on, so it can be typed into the ShareFile upload form
+    state.ref = state.ref || makeRef();
+    document.getElementById("docRef").textContent = state.ref;
+    document.getElementById("docRefHint").hidden = !CONFIG.sharefile[state.type];
+  }
   const app = document.getElementById("app");
   if(app.getBoundingClientRect().top < 0 || app.getBoundingClientRect().top > innerHeight*0.6){
     app.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
@@ -921,17 +940,35 @@ function mountShareFile(){
   const url = CONFIG.sharefile[state.type];
   const box = document.getElementById("uploadBox");
   const ph = document.getElementById("uploadPlaceholder");
+  const doc = isPurchase() ? "Purchase Contract" : "1003 loan application";
+  const uploadedChoice = document.getElementById("docUploadedChoice");
+  const uploadedLabel = document.getElementById("docUploadedLabel");
   const old = box.querySelector("iframe"); if(old) old.remove();
   if(url){
+    uploadedChoice.disabled = false;
+    uploadedLabel.textContent = "I've uploaded the " + (isPurchase() ? "Purchase Contract" : "1003") + " above";
+    document.getElementById("uploadTitle").textContent = "Upload your " + doc;
+    document.getElementById("uploadSub").textContent = "Your document uploads directly to the configured ShareFile form; it does not pass through this website.";
+    document.getElementById("uploadSecurityText").textContent = "The upload is handled by ShareFile. Access to the received files depends on Escrow Logix's ShareFile permissions.";
+    document.getElementById("docLine").textContent = "Your " + doc + " uploads directly to the configured ShareFile form.";
     ph.hidden = true;
     const f = document.createElement("iframe");
     f.src = url; f.title = "Secure document upload (ShareFile)"; f.loading = "lazy";
     f.setAttribute("referrerpolicy","no-referrer");
     box.appendChild(f);
   }else{
+    uploadedChoice.checked = false;
+    uploadedChoice.disabled = true;
+    uploadedLabel.textContent = "Upload isn't available in this demo";
+    document.getElementById("uploadTitle").textContent = "Document upload isn't connected";
+    document.getElementById("uploadSub").textContent = "ShareFile upload is not connected in this demo. You can submit the request and send the document later using a secure link from your escrow team.";
+    document.getElementById("uploadSecurityText").textContent = "File upload is not enabled here yet. Please don't try to send sensitive documents through this demo.";
+    document.getElementById("docLine").textContent = "When connected, the ShareFile form will send documents directly to ShareFile.";
     ph.hidden = false;
     document.getElementById("uploadText").textContent =
-      "The ShareFile Remote Upload Form for the " + (isPurchase() ? "Purchase Contract" : "1003") + " appears here once it's connected.";
+      "This demo does not accept files. Submit the request and your escrow team can provide a secure upload link.";
+    const label = ph.querySelector(".placeholder");
+    if(label) label.textContent = "SHAREFILE NOT CONNECTED IN DEMO";
   }
 }
 
@@ -942,6 +979,15 @@ document.querySelectorAll(".choice").forEach(btn=>{
 document.querySelectorAll("[data-preset]").forEach(a=>{
   a.addEventListener("click",()=>{ if(state.step===1) setType(a.dataset.preset); });
 });
+
+// "Who's sending it?" only applies when the agent or lender will send the document
+function syncSender(){
+  const on = val("docStatus") === "Agent/lender will send";
+  const box = document.getElementById("senderFields");
+  box.hidden = !on;
+  box.querySelectorAll("input").forEach(i=>{ i.disabled = !on; if(!on){ i.setAttribute("aria-invalid","false"); const f=i.closest(".field"); if(f) f.classList.remove("invalid"); } });
+}
+document.querySelectorAll('input[name="docStatus"]').forEach(r=>r.addEventListener("change", syncSender));
 
 /* ---------- Validation ---------- */
 function validatePanel(n){
@@ -959,9 +1005,10 @@ function validatePanel(n){
   });
   // radio groups marked required
   panel.querySelectorAll("input[type=radio][required]").forEach(r=>{
-    if(!form.querySelector(`input[name="${r.name}"]:checked`)){
+    const enabled = [...panel.querySelectorAll(`input[name="${r.name}"]:not(:disabled)`)];
+    if(enabled.length && !enabled.some(option=>option.checked)){
       const f = r.closest(".field"); if(f) f.classList.add("invalid");
-      firstBad = firstBad || r;
+      firstBad = firstBad || enabled[0];
     }
   });
   if(firstBad) firstBad.focus();
@@ -1031,7 +1078,8 @@ function buildReview(){
       ["Notes", val("notes")]
     ]],
     ["Documents", 4, [
-      [isPurchase() ? "Purchase Contract" : "1003", val("docStatus")]
+      [isPurchase() ? "Purchase Contract" : "1003", val("docStatus")],
+      ["Sending it", [val("senderName"), val("senderEmail")].filter(Boolean).join(", ")]
     ]]
   ];
   if(attribution.repName) groups[0][2].push(["Escrow Logix contact", attribution.repName + (attribution.repTitle ? ", " + attribution.repTitle : "")]);
@@ -1047,8 +1095,19 @@ function buildReview(){
 function makeRef(){
   const d = new Date();
   const ds = d.getFullYear()+String(d.getMonth()+1).padStart(2,"0")+String(d.getDate()).padStart(2,"0");
-  const rnd = (crypto.getRandomValues ? [...crypto.getRandomValues(new Uint8Array(4))].map(b=>"ABCDEFGHJKLMNPQRSTUVWXYZ23456789"[b%32]).join("") : Math.random().toString(36).slice(2,6).toUpperCase());
+  // Prototype display reference only; production must assign/check uniqueness server-side.
+  const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  const bytes = new Uint8Array(10);
+  const rnd = crypto.getRandomValues
+    ? [...crypto.getRandomValues(bytes)].map(b=>alphabet[b%32]).join("")
+    : Array.from(bytes,()=>alphabet[Math.floor(Math.random()*alphabet.length)]).join("");
   return `ELX-${ds}-${rnd}`;
+}
+function sender(){
+  const box = document.getElementById("senderFields");
+  if(box.hidden) return null;
+  const name = val("senderName") || null, email = val("senderEmail") || null;
+  return name || email ? { name, email } : null;
 }
 function money(name){ const n = parseFloat(val(name).replace(/[^\d.]/g,"")); return isNaN(n) ? null : n; }
 function buildPayload(){
@@ -1081,7 +1140,8 @@ function buildPayload(){
     documents: {
       required: isPurchase() ? "Purchase Contract" : "1003",
       status: val("docStatus"),
-      storage: "ShareFile"            // documents never travel in this payload
+      storage: "ShareFile",           // documents never travel in this payload
+      sender: sender()                // who will send it, when the agent or lender is sending
     },
     notes: val("notes") || null,
     attribution: {
@@ -1092,6 +1152,14 @@ function buildPayload(){
     // populated later by Sales Manager review + RBJ CSV reconciliation
     workflow: { stage: "New request", escrowOfficer: null, rbjEscrowNumber: null, rbjStatus: null }
   };
+}
+
+// How the payload is posted (CONFIG.crmSendAs). "text" and "form" are simple requests, so the browser sends them without a CORS preflight.
+function crmRequest(payload){
+  const json = JSON.stringify(payload);
+  if(CONFIG.crmSendAs === "text") return { method:"POST", headers:{"Content-Type":"text/plain;charset=UTF-8"}, body: json };
+  if(CONFIG.crmSendAs === "form") return { method:"POST", body: new URLSearchParams({ payload: json }) };
+  return { method:"POST", headers:{"Content-Type":"application/json"}, body: json };
 }
 
 form.addEventListener("submit", async e=>{
@@ -1111,7 +1179,7 @@ form.addEventListener("submit", async e=>{
   if(CONFIG.crmEndpoint){
     btn.disabled = true; btn.textContent = "Submitting…";
     try{
-      const res = await fetch(CONFIG.crmEndpoint, { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(payload) });
+      const res = await fetch(CONFIG.crmEndpoint, crmRequest(payload));
       if(!res.ok) throw new Error(res.status);
     }catch(x){
       btn.disabled = false; btn.textContent = "Submit escrow request";
@@ -1138,6 +1206,7 @@ function showSuccess(payload){
 
 document.getElementById("startOver").addEventListener("click",()=>{
   form.reset(); state.type=null; state.ref=null;
+  syncSender();
   document.querySelectorAll(".choice").forEach(c=>c.setAttribute("aria-pressed","false"));
   document.getElementById("next1").disabled = true;
   document.getElementById("devBox").hidden = true;
@@ -1148,6 +1217,7 @@ document.getElementById("startOver").addEventListener("click",()=>{
 if(CONFIG.crmEndpoint) document.getElementById("modeNote").textContent = "Documents upload directly to Escrow Logix's encrypted ShareFile portal and are never stored on this website. License and privacy disclosures to be supplied by Escrow Logix.";
 // start with purchase-only fields hidden until a type is chosen
 document.querySelectorAll("[data-for]").forEach(el=>{ el.hidden = true; el.querySelectorAll("input,select,textarea").forEach(i=>i.disabled = true); });
+syncSender();
 
 /* ---------- Brand assets: real logo + photos, with fallbacks ---------- */
 function onImage(img, ok, fail){

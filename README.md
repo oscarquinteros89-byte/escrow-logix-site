@@ -12,7 +12,7 @@ A test copy of the Escrow Logix open-escrow intake page (prototype V0.3), hosted
 
 ## Files
 
-- `index.html`: the whole site in one file. Everything that changes for production is in the `CONFIG` block at the top of the script: CRM webhook, ShareFile upload links, rep directory, and the base path.
+- `index.html`: the whole site in one file. Everything that changes for production is in the `CONFIG` block at the top of the script: CRM webhook, how the form posts to it (`crmSendAs`: `json`, `text` or `form`), ShareFile upload links, rep directory, and the base path.
 - `404.html`: makes rep links like `/AndreaKawawaki` work on GitHub Pages by forwarding them to `?rep=AndreaKawawaki`.
 
 ## Notes
